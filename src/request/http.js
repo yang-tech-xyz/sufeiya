@@ -4,7 +4,9 @@ import store from '../store/store'
 import * as types from '../store/types'
 import router from '../router/index'
 import $ from 'jquery'
+
 axios.defaults.timeout = 12600000
+
 window._GlobalConfig = {
   // Gat Pool V4
 
@@ -109,8 +111,10 @@ window._GlobalConfig = {
     chainId: 1,
     nascanDomain: 'https://scan.nachain.org',
     // apiDomain:window.location.origin +'/api/app',
-     apiDomain: 'https://tophis.net/api/app',
+    //  apiDomain: 'https://tophis.net/api/app',
+     apiDomain: '/api/app',
     // apiDomain: 'https://decom.fun/api/app',
+    
     
 
     seconds: 180,
@@ -129,12 +133,10 @@ window._GlobalConfig = {
   },
 }
 
-
-// import Vconsole from 'vconsole'
-// let vConsole = new Vconsole()
-// Vue.use(vConsole)
-
+// 添加新的请求路径
 axios.defaults.baseURL = _GlobalConfig[_GlobalConfig.currentEnv].apiDomain
+axios.defaults.altBaseURL = ''
+
 axios.defaults.headers.common['walletAddress'] = localStorage.getItem(
   'tophis_walletAddress',
 )
@@ -147,8 +149,6 @@ axios.interceptors.request.use(
 
     // config.params['lang'] = localStorage.getItem('Gat_Mining_Pool_language') || 'en_US'
     return config
-
-    //
   },
   (err) => {
     return Promise.reject(err)

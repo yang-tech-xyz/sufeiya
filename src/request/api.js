@@ -37,6 +37,6 @@ export default {
   topPowerDailyIncomeclaim: '/topPowerDailyIncome/claim',
   topStoreOrdercpOrder: '/topStoreOrder/cpOrder' ,
   updateTRONUSDTAddress: '/topUser/updateTRONUSDTAddress' ,
-  
+  topNotice:'/topNotice/getList',
   
 }

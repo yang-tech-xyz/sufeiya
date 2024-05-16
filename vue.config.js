@@ -17,11 +17,22 @@ module.exports = {
 
 
   devServer: {
-    port: 8084,
     https: false,
     hotOnly: true, //是否开启热更新
-    open: true, //配置自动启动浏览器
-
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+    proxy: {
+      '/api': {
+        target: 'http://43.136.88.180:18081', // 代理的目标地址
+        changeOrigin: true, // 是否改变源
+        pathRewrite: {
+          '^/api/app': '' // 路径重写，将/api开头的请求转发到目标地址
+        }
+      }
+    },
   },
   css: {
     sourceMap: false,
@@ -37,10 +48,6 @@ module.exports = {
       chunkFilename: `static/js/[name].${version}.js`
     },
   }
-
-
-
-
 
 
 
