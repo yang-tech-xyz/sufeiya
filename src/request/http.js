@@ -147,7 +147,7 @@ axios.interceptors.request.use(
       'tophis_walletAddress',
     )
 
-    // config.params['lang'] = localStorage.getItem('Gat_Mining_Pool_language') || 'en_US'
+    config.headers['Accept-Language'] = localStorage.getItem('Gat_Mining_Pool_language')=='en_US'?'en': 'cn'
     return config
   },
   (err) => {

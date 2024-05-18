@@ -14,8 +14,11 @@
         height="70px"
         @change="handleChange"
       >
-        <el-carousel-item v-for="(item, index) in announcements" :key="index">
-          <div class="announcement">{{ item }}</div>
+        <el-carousel-item
+          v-for="(item, index) in announcements"
+          :key="index"
+        >
+          <div class="announcement" @click="showAnnouncement(item)">{{ item.contents }}</div>
         </el-carousel-item>
       </el-carousel>
       <div class="custom-indicator">
@@ -27,6 +30,15 @@
         ></span>
       </div>
     </div>
+
+    <el-dialog :visible.sync="dialogVisible" width="60%" title="Announcement" class="custom-dialog">
+  <div class="announcement-content ">{{ currentAnnouncementContent }}</div>
+
+  <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="dialogVisible = false">Sure</el-button>
+  </span>
+</el-dialog>
+
     <div class="market">
       <div class="t1">
         <p>{{ $t('market.t1') }}</p>
@@ -71,71 +83,83 @@
 </template>
 
 <script>
-import Web3 from 'web3'
 import axios from "axios";
-import abi from '@/web3/contract'
+import i18n from '../../i18n/i18n';
+
 export default {
   data() {
     return {
       list: [],
       announcements: [],
       currentIndex: 0,
-      notice:[],
-      
-    }
+      dialogVisible: false,
+      currentAnnouncementContent: ""
+    };
   },
-  components: {},
   mounted() {
-    this.tokengetList()
-    this.fetchAnnouncements()
+    this.tokengetList();
+    this.fetchAnnouncements();
   },
   methods: {
     handleChange(index) {
-      this.currentIndex = index
+      this.currentIndex = index;
     },
     tokengetList() {
-      this.axios
+      axios
         .get(this.api.tokengetList, {
-          params: {}
+          params: {},
         })
         .then((res) => {
-          if (res.code == 200) {
-            this.list = res.data
+          if (res.code === 200) {
+            this.list = res.data;
           }
         })
         .catch((error) => {
-          console.error('获取列表失败：', error)
-        })
+          console.error("获取列表失败：", error);
+        });
     },
     fetchAnnouncements() {
-        this.axios
-          .get(this.api.topNotice)
-          .then((res) => {
-            if (res.code === 200) {
-              // Extract announcement contents from the response
-              const announcementsData = res.data;
+      // console.log(typeof(localStorage.getItem("Gat_Mining_Pool_language")));
+      axios
+        .get(this.api.topNotice)
+        .then((res) => {
+          if (res.code === 200) {
+            this.announcements = res.data;
 
-              // Map announcement contents to the format expected by your carousel
-              const formattedContents = announcementsData.map((announcement) => {
-                return announcement.contents;
-              });
+        // for(var i =0;i<res.data.length;i++){
+        //    var data = localStorage.getItem("Gat_Mining_Pool_language")
+        //    console.log(data);
+        //   if(res.data[i].lang==data){
+        //     this.announcements.push(res.data[i]) ;
+        //   }else{
+        //     console.log("其他类型");
+        //   }
+        // }
 
-              // Update the announcements array with the formatted contents
-              this.announcements = formattedContents;
-            }
-          })
-          .catch((error) => {
-            console.error('Error fetching announcements:', error);
-          });
-      },
-
-
-
-  }
-}
+          }
+         
+        })
+        .catch((error) => {
+          console.error("Error fetching announcements:", error);
+        });
+    },
+    showAnnouncement(item) {
+      this.currentAnnouncementContent = item.contents;
+      this.dialogVisible = true;
+    },
+    goTo(route) {
+      // Implement your navigation logic here
+    },
+  },
+};
 </script>
 
+
 <style scoped lang="less">
+.container {
+  width: 100%;
+}
+
 .bg1 {
   .gif1 {
     width: 100%;
@@ -143,6 +167,7 @@ export default {
     opacity: 0.5;
   }
 }
+
 .market {
   padding: 0 12px 0;
   position: relative;
@@ -203,9 +228,9 @@ export default {
   }
 }
 .announcement-carousel {
-  position: relative;
   width: 100%;
-  max-width: 450px;
+  position: relative;
+  max-width: 98%;
   margin: 0 auto;
   overflow: hidden;
   border: 1px solid rgba(122, 191, 255, 0.66);
@@ -253,5 +278,28 @@ export default {
 .indicator.active {
   background-color: #007bff;
 }
-</style>
 
+
+.announcement-content {
+  padding: 20px;
+  font-size: 16px;
+  color: #fff;
+  
+}
+:deep(.el-dialog__title){
+  color: #f7deb9 !important;
+
+}
+:deep(.el-dialog__header ){
+background-color: rgba(12, 14, 16,.8); 
+
+}
+:deep(.el-dialog__body){
+background-color: rgba(16, 24, 43,.8); 
+}
+:deep(.el-dialog__footer){
+  background-color: rgba(16, 24, 43,.8); 
+}
+
+
+</style>

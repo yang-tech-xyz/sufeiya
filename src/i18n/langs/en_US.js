@@ -165,7 +165,6 @@ const zh_CN = {
     t62: 'TRON USDT withdrawal address',
     t64: 'Transfer successful',
     t65: 'Transfer failed',
-    t66: 'Node dealers',
   },
 }
 

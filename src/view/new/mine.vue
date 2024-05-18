@@ -12,7 +12,7 @@
     </div>
     <div class="com">
       <div class="t1">
-        <div>{{ $t('mine.t1') }} {{detail2.grade==10?$t('mine.t66'):'VIP'+detail2.grade}}</div>
+        <div>{{ $t('mine.t1') }}VIP{{ detail2.grade }}</div>
         <div><img src="../../assets/new/20.png" alt="" /></div>
       </div>
       <div class="links">
