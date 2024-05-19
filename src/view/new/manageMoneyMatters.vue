@@ -1,45 +1,47 @@
 <template>
   <div class="manageMoneyMatters" @touchstart="isType = ''">
-    <inc_menu />
+    <inc_menu/>
     <div class="bg1">
-      <div><img class="gif1" src="../../assets/img/1.gif" alt="" /></div>
-      <div class="titleIcon"><img :src="$t('manageMoneyMatters.img1')" alt="" /></div>
+      <div><img class="gif1" src="../../assets/img/1.gif" alt=""/></div>
+      <div class="titleIcon"><img :src="$t('manageMoneyMatters.img1')" alt=""/></div>
     </div>
     <div class="t1">
       <div class="t2">
         <div
-          class="t3"
-          @touchstart.stop="isType = 1"
-          @click="drawer = true"
-          :class="isType == 1 ? 'activeBg' : ''"
+            class="t3"
+            @touchstart.stop="isType = 1"
+            @click="drawer = true"
+            :class="isType == 1 ? 'activeBg' : ''"
         >
           <div>
-            <img :src="icon1" alt="" />
+            <img :src="icon1" alt=""/>
             {{ symbol || $t('computingPower.t1') }}
           </div>
           <div>
-            <img class="navDown" src="../../assets/new/16.png" alt="" />
+            <img class="navDown" src="../../assets/new/16.png" alt=""/>
           </div>
         </div>
         <div
-          class="t3"
-          @touchstart.stop="isType = 2"
-          :class="isType == 2 ? 'activeBg' : ''"
-          v-model="amount"
+            class="t3 re"
+            @touchstart.stop="isType = 2"
+            :class="isType == 2 ? 'activeBg' : ''"
+            v-model="amount"
         >
-          <input type="number" :placeholder="$t('BDCF.t5')" v-model="amount" />
+          <input type="number" :placeholder="$t('BDCF.t5')" v-model="amount"/>
         </div>
+        <div class="t3-rename">{{ $t('mine.t67') }}</div>
+
         <div
-          class="t3"
-          @touchstart.stop="isType = 3"
-          @click="drawer2 = true"
-          :class="isType == 3 ? 'activeBg' : ''"
+            class="t3"
+            @touchstart.stop="isType = 3"
+            @click="drawer2 = true"
+            :class="isType == 3 ? 'activeBg' : ''"
         >
           <div>
             {{ obj.name || $t('manageMoneyMatters.t1') }}
           </div>
           <div>
-            <img class="navDown" src="../../assets/new/16.png" alt="" />
+            <img class="navDown" src="../../assets/new/16.png" alt=""/>
           </div>
         </div>
         <div class="t4">
@@ -50,7 +52,7 @@
       </div>
       <div class="t6">
         <div class="t7">
-          <img class="gifIcon2" src="../../assets/new/2.gif" alt="" />
+          <img class="gifIcon2" src="../../assets/new/2.gif" alt=""/>
         </div>
         <div class="t8">
           <div>
@@ -67,7 +69,7 @@
       </div>
       <div class="t9">
         <p>{{ $t('manageMoneyMatters.t6') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div class="list" v-if="topStoreOrdergetPageList.length">
         <div class="t11">
@@ -77,9 +79,9 @@
           <p>{{ $t('manageMoneyMatters.t10') }}</p>
         </div>
         <div
-          class="t11 t12"
-          v-for="(item, idx) in topStoreOrdergetPageList"
-          :key="idx"
+            class="t11 t12"
+            v-for="(item, idx) in topStoreOrdergetPageList"
+            :key="idx"
         >
           <p>{{ item.symbol }}</p>
           <p>{{ item.amount }}</p>
@@ -87,14 +89,14 @@
           <p class="num" v-if="item.status != 2">
             {{
               item.status == 1
-                ? $t('manageMoneyMatters.t11')
-                : $t('manageMoneyMatters.t12')
+                  ? $t('manageMoneyMatters.t11')
+                  : $t('manageMoneyMatters.t12')
             }}
           </p>
           <p class="num" v-if="item.status == 2">
             <span
-              @click="topStoreOrdercpOrder(item.orderNo)"
-              class="topStoreOrdercpOrderBtn"
+                @click="topStoreOrdercpOrder(item.orderNo)"
+                class="topStoreOrdercpOrderBtn"
             >
               {{ $t('manageMoneyMatters.t13') }}
             </span>
@@ -105,7 +107,7 @@
         <div class="card text-center pd2">
           <div class="card-body">
             <div class="mb-2 mt-2">
-              <img class="icon_empty" src="../../assets/new/27.png" alt="" />
+              <img class="icon_empty" src="../../assets/new/27.png" alt=""/>
               <p class="noList">
                 {{ $t('computingPower.t16') }}
               </p>
@@ -117,61 +119,62 @@
 
     <div class="navigationBar">
       <div @click="goTo('/')">
-        <p><img src="../../assets/new/10.png" alt="" /></p>
+        <p><img src="../../assets/new/10.png" alt=""/></p>
         <p>{{ $t('tab.market') }}</p>
       </div>
       <div @click="goTo('/computingPower')">
-        <p><img src="../../assets/new/13.png" alt="" /></p>
+        <p><img src="../../assets/new/13.png" alt=""/></p>
         <p>{{ $t('tab.computingPower') }}</p>
       </div>
       <div @click="goTo('/manageMoneyMatters')" class="active">
-        <p><img src="../../assets/new/12.png" alt="" /></p>
+        <p><img src="../../assets/new/12.png" alt=""/></p>
         <p>{{ $t('tab.manageMoneyMatters') }}</p>
       </div>
       <div @click="goTo('/BDCF')">
-        <p><img src="../../assets/new/9.png" alt="" /></p>
+        <p><img src="../../assets/new/9.png" alt=""/></p>
         <p>{{ $t('tab.BTCF') }}</p>
       </div>
       <div @click="goTo('/mine')">
-        <p><img src="../../assets/new/11.png" alt="" /></p>
+        <p><img src="../../assets/new/11.png" alt=""/></p>
         <p>{{ $t('tab.mine') }}</p>
       </div>
     </div>
     <div class="hig"></div>
 
     <el-drawer
-      :title="$t('BDCF.t11')"
-      :visible.sync="drawer"
-      :direction="'btt'"
+        :title="$t('BDCF.t11')"
+        :visible.sync="drawer"
+        :direction="'btt'"
     >
       <div class="list2">
         <div
-          v-for="(item, idx) in chainList"
-          :key="idx"
-          @click="drawerFn(item)"
-          v-if="item.storeEnabled"
+            v-for="(item, idx) in chainList"
+            :key="idx"
+            @click="drawerFn(item)"
+            v-if="item.storeEnabled"
         >
-          <p><img :src="item.icon" alt="" /></p>
+          <p><img :src="item.icon" alt=""/></p>
           <p>{{ item.symbol }}</p>
           <p class="balance">
-            {{ $t('manageMoneyMatters.t14')
+            {{
+              $t('manageMoneyMatters.t14')
             }}{{ roundingFn(item.balance, 4) || 0 }}
           </p>
         </div>
       </div>
     </el-drawer>
     <el-drawer
-      :title="$t('manageMoneyMatters.t15')"
-      :visible.sync="drawer2"
-      :direction="'btt'"
+        :title="$t('manageMoneyMatters.t15')"
+        :visible.sync="drawer2"
+        :direction="'btt'"
     >
       <div class="list2">
         <div
-          v-for="(item, idx) in getList"
-          :key="idx"
-          @click="getListTabFn(item)"
+            v-for="(item, idx) in getList"
+            :key="idx"
+            @click="getListTabFn(item)"
         >
-          <p><img src="../../assets/image/4.png" alt="" /></p>
+          <p><img src="../../assets/image/4.png" alt=""/></p>
           <p>{{ item.name }}</p>
         </div>
       </div>
@@ -181,7 +184,7 @@
 
 <script>
 import Web3 from 'web3'
-import abi from '@/web3/contract'
+
 export default {
   data() {
     return {
@@ -211,7 +214,8 @@ export default {
     this.topStoreOrdergetPage()
     this.topStoreOrderOrderInfo()
   },
-  created() {},
+  created() {
+  },
   methods: {
     async getAccountsFn() {
       let data = await this.axios.get(this.api.getAccounts, {
@@ -222,28 +226,28 @@ export default {
     },
     topStoreOrderOrderInfo() {
       this.axios
-        .get(this.api.topStoreOrderOrderInfo, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.orderInfo = res.data
-          }
-        })
+          .get(this.api.topStoreOrderOrderInfo, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.orderInfo = res.data
+            }
+          })
     },
     topStoreOrdergetPage() {
       this.axios
-        .get(this.api.topStoreOrdergetPage, {
-          params: {
-            pageNum: 1,
-            pageSize: 100000,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.topStoreOrdergetPageList = res.data.list
-          }
-        })
+          .get(this.api.topStoreOrdergetPage, {
+            params: {
+              pageNum: 1,
+              pageSize: 100000,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.topStoreOrdergetPageList = res.data.list
+            }
+          })
     },
     drawerFn(item) {
       this.symbol = item.symbol
@@ -260,21 +264,21 @@ export default {
     async tokengetList() {
       var self = this
       this.axios
-        .get(this.api.tokengetList, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.chainList = res.data
-            res.data.forEach(async (e) => {
-              this.getAccountsList.forEach((e2) => {
-                if (e.symbol == e2.symbol) {
-                  e['balance'] = e2.availableBalance
-                }
+          .get(this.api.tokengetList, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.chainList = res.data
+              res.data.forEach(async (e) => {
+                this.getAccountsList.forEach((e2) => {
+                  if (e.symbol == e2.symbol) {
+                    e['balance'] = e2.availableBalance
+                  }
+                })
               })
-            })
-          }
-        })
+            }
+          })
     },
     async getListFn() {
       var getChainId = -1
@@ -284,17 +288,17 @@ export default {
       }
       var self = this
       this.axios
-        .get(this.api.getList, {
-          params: {
-            walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
-            chainId: getChainId,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.getList = res.data
-          }
-        })
+          .get(this.api.getList, {
+            params: {
+              walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
+              chainId: getChainId,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.getList = res.data
+            }
+          })
     },
     topStoreOrderorder() {
       var self = this
@@ -310,91 +314,91 @@ export default {
       }
       if (this.amount < this.obj.limitMinAmount) {
         $('.modal-body-erro').html(
-          this.$t('manageMoneyMatters.t18') + this.obj.limitMinAmount,
+            this.$t('manageMoneyMatters.t18') + this.obj.limitMinAmount,
         )
         $('.clickDialogIconedDanger').click()
         return
       }
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.topStoreOrderorder, {
-              storeId: self.obj.id,
-              amount: self.amount,
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              symbol: self.symbol,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.amount = ''
-                self.symbol = ''
-                self.getAccountsFn()
-                self.getListFn()
-                self.topStoreOrdergetPage()
-                self.topStoreOrderOrderInfo()
-                self.obj = {}
-                $('.modal-body-success').html(this.$t('manageMoneyMatters.t19'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(
-                  res.msg || this.$t('manageMoneyMatters.t20'),
-                )
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(
-                e.msg || this.$t('manageMoneyMatters.t20'),
-              )
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.topStoreOrderorder, {
+                  storeId: self.obj.id,
+                  amount: self.amount,
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  symbol: self.symbol,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.amount = ''
+                    self.symbol = ''
+                    self.getAccountsFn()
+                    self.getListFn()
+                    self.topStoreOrdergetPage()
+                    self.topStoreOrderOrderInfo()
+                    self.obj = {}
+                    $('.modal-body-success').html(this.$t('manageMoneyMatters.t19'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(
+                        res.msg || this.$t('manageMoneyMatters.t20'),
+                    )
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(
+                      e.msg || this.$t('manageMoneyMatters.t20'),
+                  )
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     topStoreOrdercpOrder(orderNo) {
       var self = this
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.topStoreOrdercpOrder, {
-              orderNo: orderNo,
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.getAccountsFn()
-                self.getListFn()
-                self.topStoreOrdergetPage()
-                self.topStoreOrderOrderInfo()
-                $('.modal-body-success').html(this.$t('computingPower.t25'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || 'failed')
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || 'failed')
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.topStoreOrdercpOrder, {
+                  orderNo: orderNo,
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.getAccountsFn()
+                    self.getListFn()
+                    self.topStoreOrdergetPage()
+                    self.topStoreOrderOrderInfo()
+                    $('.modal-body-success').html(this.$t('computingPower.t25'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || 'failed')
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || 'failed')
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
   },
 }
@@ -403,8 +407,10 @@ export default {
 <style scoped lang="less">
 .manageMoneyMatters {
   padding-bottom: 40px;
+
   .bg1 {
     margin-top: -30px;
+
     .gif1 {
       width: 100%;
       position: absolute;
@@ -412,16 +418,19 @@ export default {
       right: -40%;
       top: -20%;
     }
+
     .titleIcon {
       text-align: center;
       position: relative;
       z-index: 10;
+
       img {
         width: 300px;
         margin: 60px auto 0;
       }
     }
   }
+
   .t1 {
     padding: 6px 12px;
     margin-top: 20px;
@@ -433,6 +442,16 @@ export default {
       border-radius: 12px 12px 12px 12px;
       border: 1px solid #5b89b3;
       padding: 24px 12px;
+
+
+
+      .t3-rename{
+        font-size: 0.28rem;
+        margin-left: 5px;
+        margin-top: 4px;
+        margin-bottom: 6px;
+        color:red;
+      }
       .t3 {
         height: 44px;
         border-radius: 12px 12px 12px 12px;
@@ -444,22 +463,29 @@ export default {
 
         margin-bottom: 16px;
         justify-content: space-between;
+
         div {
           font-size: 15px;
         }
+
         input[placeholder],
         [placeholder],
         *[placeholder] {
           font-size: 15px;
         }
+
         img {
           width: 24px;
           margin-right: 4px;
           border-radius: 50%;
         }
+
         .navDown {
           width: 15px;
         }
+      }
+      .re{
+        margin-bottom: 2px;
       }
       .activeBg {
         background: #101010;
@@ -473,6 +499,7 @@ export default {
         font-size: 14px;
         color: #ffffff;
       }
+
       > p:nth-child(2) {
         font-weight: bold;
         font-size: 40px;
@@ -480,6 +507,7 @@ export default {
         padding: 22px 0 30px;
         text-align: center;
       }
+
       > p:nth-child(3) {
         width: 220px;
         height: 44px;
@@ -501,31 +529,38 @@ export default {
       border: 1px solid rgba(122, 191, 255, 0.66);
       padding: 24px 12px 30px;
       margin-top: 23px;
+
       .t7 {
         text-align: center;
+
         .gifIcon2 {
           width: 241px;
           margin: 0 auto;
         }
       }
+
       .t8 {
         display: flex;
         margin-top: 40px;
+
         > div {
           width: 50%;
           padding-left: 10px;
           padding-right: 20px;
+
           > p:nth-child(1) {
             font-weight: 400;
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
             margin-bottom: 10px;
           }
+
           .num1 {
             font-weight: 500;
             font-size: 15px;
             color: #ffffff;
           }
+
           .num2 {
             font-weight: 500;
             font-size: 15px;
@@ -534,16 +569,19 @@ export default {
         }
       }
     }
+
     .t9 {
       font-weight: 500;
       font-size: 16px;
       color: #ffffff;
       margin: 34px 0 24px;
       position: relative;
+
       p {
         position: relative;
         z-index: 1;
       }
+
       img {
         width: 62px;
         position: absolute;
@@ -552,46 +590,57 @@ export default {
         z-index: 0;
       }
     }
+
     .list {
       background: rgba(36, 38, 39, 0.7);
       border-radius: 12px 12px 12px 12px;
       border: 1px solid rgba(122, 191, 255, 0.66);
       padding: 0 12px;
+
       .t11 {
         display: flex;
         padding: 15px 0;
         justify-content: space-between;
+
         p {
           font-weight: 400;
           font-size: 14px;
           color: #999999;
           width: 20%;
         }
+
         > p:nth-child(1) {
           width: 15%;
         }
+
         > p:nth-child(2) {
           text-align: center;
           width: 30%;
         }
+
         > p:nth-child(3) {
           text-align: center;
           width: 30%;
         }
+
         > p:nth-child(4) {
           text-align: right;
         }
       }
+
       .t12 {
         border-top: 1px solid #535860;
         display: flex;
         align-items: center;
+
         p {
           color: #fff;
         }
+
         .num {
           color: #02ff3e;
         }
+
         .topStoreOrdercpOrderBtn {
           min-width: 44px;
           height: 24px;
@@ -613,6 +662,7 @@ export default {
   padding: 0 16px;
   max-height: 300px;
   overflow-y: scroll;
+
   > div {
     background: rgba(0, 198, 255, 0.1);
     border-radius: 8px;
@@ -624,6 +674,7 @@ export default {
     display: flex;
     align-items: center;
     position: relative;
+
     .balance {
       position: absolute;
       right: 20px;
@@ -631,6 +682,7 @@ export default {
       color: #fff;
       opacity: 0.8;
     }
+
     img {
       width: 26px;
       margin-right: 10px;

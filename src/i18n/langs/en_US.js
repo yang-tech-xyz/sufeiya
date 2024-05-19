@@ -165,6 +165,9 @@ const zh_CN = {
     t62: 'TRON USDT withdrawal address',
     t64: 'Transfer successful',
     t65: 'Transfer failed',
+    t66: 'Node dealers',
+    t67:`The digital assets you deposit will be allocated to BTC\'s global mining operations, ensuring steady returns`,
+
   },
 }
 

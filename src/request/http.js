@@ -11,7 +11,7 @@ window._GlobalConfig = {
   // Gat Pool V4
 
   /* Deploy */
-  currentEnv: 'pro', // pro test local
+  currentEnv: 'local', // pro test local
 
   /* localhost */
   local: {
@@ -19,7 +19,7 @@ window._GlobalConfig = {
     quickRegContractAddr: '',
     usdtContractAddr: '',
     nascanDomain: '',
-    apiDomain: 'http://127.0.0.1:9200',
+    apiDomain: '/tophis/api/app',
 
     projectName: 'GatPool_Local',
     website: 'https://www.gatpool.com',
