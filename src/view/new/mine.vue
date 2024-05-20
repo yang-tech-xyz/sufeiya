@@ -1,19 +1,19 @@
 <template>
   <div
-    class="mine"
-    @touchstart="
+      class="mine"
+      @touchstart="
       isType = ''
       isType2 = ''
     "
   >
-    <inc_menu />
+    <inc_menu/>
     <div class="bg1">
-      <div><img class="gif1" src="../../assets/img/1.gif" alt="" /></div>
+      <div><img class="gif1" src="../../assets/img/1.gif" alt=""/></div>
     </div>
     <div class="com">
       <div class="t1">
-        <div>{{ $t('mine.t1') }} {{detail2.grade==10?$t('mine.t66'):'VIP'+detail2.grade}}</div>
-        <div><img src="../../assets/new/20.png" alt="" /></div>
+        <div>{{ $t('mine.t1') }} {{ detail2.grade == 10 ? $t('mine.t66') : 'VIP' + detail2.grade }}</div>
+        <div><img src="../../assets/new/20.png" alt=""/></div>
       </div>
       <div class="links">
         <p>{{ $t('tab.t1') }}</p>
@@ -22,7 +22,7 @@
       </div>
       <div class="t2">
         <p>{{ $t('mine.t2') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div class="t3" v-if="ioconList.length">
         <div class="bors">
@@ -34,10 +34,10 @@
               </p>
             </div>
             <div
-              class="save"
-              data-bs-toggle="modal"
-              data-bs-target="#DialogBasic7"
-              @click="tokenclaim(item.symbol, item.availableBalance)"
+                class="save"
+                data-bs-toggle="modal"
+                data-bs-target="#DialogBasic7"
+                @click="tokenclaim(item.symbol, item.availableBalance)"
             >
               {{ $t('mine.t3') }}
             </div>
@@ -45,27 +45,27 @@
         </div>
         <div class="t4">
           <img
-            @click="ioconIdx <= 0 ? 0 : ioconIdx--"
-            :src="
+              @click="ioconIdx <= 0 ? 0 : ioconIdx--"
+              :src="
               ioconIdx <= 0
                 ? require('../../assets/new/4.png')
                 : require('../../assets/new/3.png')
             "
-            alt=""
+              alt=""
           />
           <p>{{ ioconIdx + 1 }}/{{ ioconList.length }}</p>
           <img
-            @click="
+              @click="
               ioconIdx >= ioconList.length - 1
                 ? ioconList.length - 1
                 : ioconIdx++
             "
-            :src="
+              :src="
               ioconIdx >= ioconList.length - 1
                 ? require('../../assets/new/1.png')
                 : require('../../assets/new/2.png')
             "
-            alt=""
+              alt=""
           />
         </div>
       </div>
@@ -73,7 +73,7 @@
         <div class="card text-center pd2">
           <div class="card-body">
             <div class="mb-2 mt-2">
-              <img class="icon_empty" src="../../assets/new/27.png" alt="" />
+              <img class="icon_empty" src="../../assets/new/27.png" alt=""/>
               <p class="noList">{{ $t('computingPower.t16') }}</p>
             </div>
           </div>
@@ -84,9 +84,9 @@
           {{ $t('mine.t4') }}
         </div>
         <div
-          data-bs-toggle="modal"
-          data-bs-target="#DialogBasic2"
-          class="usdSave"
+            data-bs-toggle="modal"
+            data-bs-target="#DialogBasic2"
+            class="usdSave"
         >
           USDT {{ $t('mine.t5') }}
         </div>
@@ -94,30 +94,30 @@
       <div>
         <div>BTC{{ $t('mine.t6') }}</div>
         <div
-          class="ipt"
-          @touchstart.stop="
+            class="ipt"
+            @touchstart.stop="
             isType = 1
             isType2 = ''
           "
-          :class="isType == 1 ? 'activeBg' : ''"
+            :class="isType == 1 ? 'activeBg' : ''"
         >
           <input
-            :disabled="btcTransferAddress2 ? true : false"
-            :placeholder="$t('mine.t7')"
-            v-model="btcTransferAddress"
+              :disabled="btcTransferAddress2 ? true : false"
+              :placeholder="$t('mine.t7')"
+              v-model="btcTransferAddress"
           />
 
           <p
-            class="save"
-            v-if="!btcTransferAddress2"
-            @click="updateWithdrawBTCAddress"
+              class="save"
+              v-if="!btcTransferAddress2"
+              @click="updateWithdrawBTCAddress"
           >
             {{ $t('mine.t8') }}
           </p>
           <p
-            class="save"
-            v-if="btcTransferAddress2"
-            @click="copySubmit(btcTransferAddress2)"
+              class="save"
+              v-if="btcTransferAddress2"
+              @click="copySubmit(btcTransferAddress2)"
           >
             {{ $t('mine.t9') }}
           </p>
@@ -127,23 +127,23 @@
       <div style="margin-top: 30px;">
         <div>TRON USDT{{ $t('mine.t6') }}</div>
         <div
-          class="ipt"
-          @touchstart.stop="
+            class="ipt"
+            @touchstart.stop="
             isType2 = 1
             isType = ''
           "
-          :class="isType2 == 1 ? 'activeBg' : ''"
+            :class="isType2 == 1 ? 'activeBg' : ''"
         >
           <input
-            :placeholder="$t('mine.t10')"
-            v-model="tronUsdtaddress"
-            
+              :placeholder="$t('mine.t10')"
+              v-model="tronUsdtaddress"
+
           />
 
           <p
-            class="save"
-           
-            @click.stop="updateTRONUSDTAddress"
+              class="save"
+
+              @click.stop="updateTRONUSDTAddress"
           >
             {{ $t('mine.t8') }}
           </p>
@@ -160,7 +160,7 @@
 
       <div class="t2">
         <p>{{ $t('mine.t11') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div class="bor">
         <div class="line">
@@ -173,9 +173,9 @@
             <p>
               {{ interceptFn2(shareUrl) }}
               <img
-                @click="copySubmit(shareUrl)"
-                src="../../assets/new/5.png"
-                alt=""
+                  @click="copySubmit(shareUrl)"
+                  src="../../assets/new/5.png"
+                  alt=""
               />
             </p>
           </div>
@@ -187,10 +187,14 @@
             <p>{{ $t('mine.t16') }}</p>
             <p>{{ inviteInfo.totalPowerIncome }}BTC</p>
           </div>
+          <div>
+            <p>{{ $t('mine.t68') }}</p>
+            <p>{{ inviteInfo.totalInvitePowerNumber || 0 }}{{ $t('mine.t69') }}</p>
+          </div>
         </div>
         <div
-          class="list"
-          v-if="getPowerInvitePageList && getPowerInvitePageList.length"
+            class="list"
+            v-if="getPowerInvitePageList && getPowerInvitePageList.length"
         >
           <div class="t11">
             <p>{{ $t('mine.t17') }}</p>
@@ -199,9 +203,9 @@
             <p>{{ $t('mine.t20') }}</p>
           </div>
           <div
-            class="t11 t12"
-            v-for="(item, idx) in getPowerInvitePageList"
-            :key="idx"
+              class="t11 t12"
+              v-for="(item, idx) in getPowerInvitePageList"
+              :key="idx"
           >
             <p>V{{ item.grade }}</p>
             <p>{{ interceptFn(item.wallet) }}</p>
@@ -210,30 +214,30 @@
           </div>
           <div class="t4">
             <img
-              @click="
+                @click="
                 pageNum <= 1 ? 1 : pageNum--
                 getPowerInvitePage()
               "
-              :src="
+                :src="
                 pageNum <= 0
                   ? require('../../assets/new/4.png')
                   : require('../../assets/new/3.png')
               "
-              alt=""
+                alt=""
             />
             <p>{{ pageNum }}/{{ totalPage }}</p>
 
             <img
-              @click="
+                @click="
                 pageNum >= totalPage ? totalPage : pageNum++
                 getPowerInvitePage()
               "
-              :src="
+                :src="
                 pageNum >= totalPage
                   ? require('../../assets/new/1.png')
                   : require('../../assets/new/2.png')
               "
-              alt=""
+                alt=""
             />
           </div>
         </div>
@@ -241,7 +245,7 @@
 
       <div class="t2">
         <p>{{ $t('mine.t21') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div class="bor">
         <div class="line">
@@ -255,8 +259,8 @@
           </div>
         </div>
         <div
-          class="list list011"
-          v-if="getStoreInvitePageList && getStoreInvitePageList.length"
+            class="list list011"
+            v-if="getStoreInvitePageList && getStoreInvitePageList.length"
         >
           <div class="t11">
             <p>{{ $t('mine.t24') }}</p>
@@ -264,9 +268,9 @@
             <p>{{ $t('mine.t26') }}</p>
           </div>
           <div
-            class="t11 t12"
-            v-for="(item, idx) in getStoreInvitePageList"
-            :key="idx"
+              class="t11 t12"
+              v-for="(item, idx) in getStoreInvitePageList"
+              :key="idx"
           >
             <p>V{{ item.grade }}</p>
             <p>{{ interceptFn(item.wallet) }}</p>
@@ -274,30 +278,30 @@
           </div>
           <div class="t4">
             <img
-              @click="
+                @click="
                 pageNum2 <= 1 ? 1 : pageNum2--
                 getStoreInvitePage()
               "
-              :src="
+                :src="
                 pageNum2 <= 0
                   ? require('../../assets/new/4.png')
                   : require('../../assets/new/3.png')
               "
-              alt=""
+                alt=""
             />
             <p>{{ pageNum2 }}/{{ totalPage2 }}</p>
 
             <img
-              @click="
+                @click="
                 pageNum2 >= totalPage2 ? totalPage2 : pageNum2++
                 getStoreInvitePage()
               "
-              :src="
+                :src="
                 pageNum2 >= totalPage2
                   ? require('../../assets/new/1.png')
                   : require('../../assets/new/2.png')
               "
-              alt=""
+                alt=""
             />
           </div>
         </div>
@@ -305,11 +309,11 @@
 
       <div class="t2">
         <p>{{ $t('mine.t27') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div
-        class="bor"
-        v-if="topAccountTxgetPageList && topAccountTxgetPageList.length"
+          class="bor"
+          v-if="topAccountTxgetPageList && topAccountTxgetPageList.length"
       >
         <div class="list list012">
           <div class="t11">
@@ -320,9 +324,9 @@
             <p>{{ $t('mine.t31') }}</p>
           </div>
           <div
-            class="t11 t12"
-            v-for="(item, idx) in topAccountTxgetPageList"
-            :key="idx"
+              class="t11 t12"
+              v-for="(item, idx) in topAccountTxgetPageList"
+              :key="idx"
           >
             <p>{{ item.symbol }}</p>
             <p>{{ item.amount }}</p>
@@ -376,30 +380,30 @@
           </div>
           <div class="t4">
             <img
-              @click="
+                @click="
                 pageNum3 <= 1 ? 1 : pageNum3--
                 topAccountTxgetPage()
               "
-              :src="
+                :src="
                 pageNum3 <= 0
                   ? require('../../assets/new/4.png')
                   : require('../../assets/new/3.png')
               "
-              alt=""
+                alt=""
             />
             <p>{{ pageNum3 }}/{{ totalPage3 }}</p>
 
             <img
-              @click="
+                @click="
                 pageNum3 >= totalPage3 ? totalPage3 : pageNum3++
                 topAccountTxgetPage()
               "
-              :src="
+                :src="
                 pageNum3 >= totalPage3
                   ? require('../../assets/new/1.png')
                   : require('../../assets/new/2.png')
               "
-              alt=""
+                alt=""
             />
           </div>
         </div>
@@ -408,7 +412,7 @@
         <div class="card text-center pd2">
           <div class="card-body">
             <div class="mb-2 mt-2">
-              <img class="icon_empty" src="../../assets/new/27.png" alt="" />
+              <img class="icon_empty" src="../../assets/new/27.png" alt=""/>
               <p class="noList">{{ $t('computingPower.t16') }}</p>
             </div>
           </div>
@@ -418,33 +422,33 @@
 
     <div class="navigationBar">
       <div @click="goTo('/')">
-        <p><img src="../../assets/new/10.png" alt="" /></p>
+        <p><img src="../../assets/new/10.png" alt=""/></p>
         <p>{{ $t('tab.market') }}</p>
       </div>
       <div @click="goTo('/computingPower')">
-        <p><img src="../../assets/new/13.png" alt="" /></p>
+        <p><img src="../../assets/new/13.png" alt=""/></p>
         <p>{{ $t('tab.computingPower') }}</p>
       </div>
       <div @click="goTo('/manageMoneyMatters')">
-        <p><img src="../../assets/new/7.png" alt="" /></p>
+        <p><img src="../../assets/new/7.png" alt=""/></p>
         <p>{{ $t('tab.manageMoneyMatters') }}</p>
       </div>
       <div @click="goTo('/BDCF')">
-        <p><img src="../../assets/new/9.png" alt="" /></p>
+        <p><img src="../../assets/new/9.png" alt=""/></p>
         <p>{{ $t('tab.BTCF') }}</p>
       </div>
       <div @click="goTo('/mine')" class="active">
-        <p><img src="../../assets/new/6.png" alt="" /></p>
+        <p><img src="../../assets/new/6.png" alt=""/></p>
         <p>{{ $t('tab.mine') }}</p>
       </div>
     </div>
     <div class="hig"></div>
     <div
-      class="modal fade dialogbox"
-      id="DialogBasic"
-      data-bs-backdrop="static"
-      tabindex="-1"
-      role="dialog"
+        class="modal fade dialogbox"
+        id="DialogBasic"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        role="dialog"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -455,10 +459,10 @@
           <div class="modal-footer">
             <div class="btn-inline incBtn">
               <a
-                href="#"
-                class="alertBtn"
-                data-bs-dismiss="modal"
-                @click="exchangeBTC2USDT"
+                  href="#"
+                  class="alertBtn"
+                  data-bs-dismiss="modal"
+                  @click="exchangeBTC2USDT"
               >
                 {{ $t('mine.t47') }}
               </a>
@@ -472,11 +476,11 @@
     </div>
 
     <div
-      class="modal fade dialogbox"
-      id="DialogBasic2"
-      data-bs-backdrop="static"
-      tabindex="-1"
-      role="dialog"
+        class="modal fade dialogbox"
+        id="DialogBasic2"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        role="dialog"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -486,16 +490,16 @@
           <div class="modal-body iptList">
             <p>
               <input
-                type="number"
-                v-model="amount"
-                :placeholder="$t('mine.t50')"
+                  type="number"
+                  v-model="amount"
+                  :placeholder="$t('mine.t50')"
               />
             </p>
             <p>
               <input
-                type="text"
-                v-model="receiveAddress"
-                :placeholder="$t('mine.t51')"
+                  type="text"
+                  v-model="receiveAddress"
+                  :placeholder="$t('mine.t51')"
               />
             </p>
           </div>
@@ -513,11 +517,11 @@
       </div>
     </div>
     <div
-      class="modal fade dialogbox"
-      id="DialogBasic7"
-      data-bs-backdrop="static"
-      tabindex="-1"
-      role="dialog"
+        class="modal fade dialogbox"
+        id="DialogBasic7"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        role="dialog"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -527,9 +531,9 @@
           <div class="modal-body iptList">
             <p>
               <input
-                type="number"
-                v-model="amount2"
-                :placeholder="$t('mine.t53')"
+                  type="number"
+                  v-model="amount2"
+                  :placeholder="$t('mine.t53')"
               />
             </p>
           </div>
@@ -552,6 +556,7 @@
 <script>
 import Web3 from 'web3'
 import abi from '@/web3/contract'
+
 const TronWeb = require('tronweb')
 
 export default {
@@ -647,175 +652,176 @@ export default {
       }
 
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          const TronWeb = require('tronweb')
-          const tronWeb = new TronWeb({
-            fullHost: 'https://api.trongrid.io',
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
           })
-          self.axios
-            .post(self.api.tokenclaim, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              amount: self.amount2,
-              symbol: self.symbol2 == 'TRON USDT' ? 'USDT' : self.symbol2,
-              chainId: getChainId,
-            })
-            .then((res) => {
-              self.getAccountsFn3()
-              if (res.code == 200) {
-                self.amount2 = ''
-                $('.modal-body-success').html(this.$t('mine.t56'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('mine.t57'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || this.$t('mine.t57'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
-    },
-
-    getPowerInvitePage() {
-      this.axios
-        .get(this.api.getPowerInvitePage, {
-          params: {
-            pageNum: this.pageNum,
-            pageSize: 10,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.getPowerInvitePageList = res.data.list
-            this.total = res.data.total
-            this.totalPage = res.data.totalPage
-          }
-        })
-    },
-    getStoreInvitePage() {
-      this.axios
-        .get(this.api.getStoreInvitePage, {
-          params: {
-            pageNum: this.pageNum2,
-            pageSize: 10,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.getStoreInvitePageList = res.data.list
-            this.total2 = res.data.total
-            this.totalPage2 = res.data.totalPage
-          }
-        })
-    },
-    topAccountTxgetPage() {
-      this.axios
-        .get(this.api.topAccountTxgetPage, {
-          params: {
-            pageNum: this.pageNum3,
-            pageSize: 10,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.topAccountTxgetPageList = res.data.list
-            this.total3 = res.data.total
-            this.totalPage3 = res.data.totalPage
-          }
-        })
-    },
-
-    getPowerInviteInfo() {
-      this.axios
-        .get(this.api.getPowerInviteInfo, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.inviteInfo = res.data
-          }
-        })
-    },
-    getStoreInviteInfo() {
-      this.axios
-        .get(this.api.getStoreInviteInfo, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.inviteInfo2 = res.data
-          }
-        })
-    },
-    topUser() {
-      this.axios
-        .get(this.api.topUser, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
+          .then((signature) => {
             const TronWeb = require('tronweb')
             const tronWeb = new TronWeb({
               fullHost: 'https://api.trongrid.io',
             })
-            this.detail2 = res.data
-            this.btcTransferAddress = res.data.btcTransferAddress
-            this.btcTransferAddress2 = res.data.btcTransferAddress
-            if (res.data.tronWallet) {
-              this.tronUsdtaddress = tronWeb.address.fromHex(
-                res.data.tronWallet,
-              )
-              this.tronUsdtaddress2 = tronWeb.address.fromHex(
-                res.data.tronWallet,
-              )
+            self.axios
+                .post(self.api.tokenclaim, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  amount: self.amount2,
+                  symbol: self.symbol2 == 'TRON USDT' ? 'USDT' : self.symbol2,
+                  chainId: getChainId,
+                })
+                .then((res) => {
+                  self.getAccountsFn3()
+                  if (res.code == 200) {
+                    self.amount2 = ''
+                    $('.modal-body-success').html(this.$t('mine.t56'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('mine.t57'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || this.$t('mine.t57'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
+    },
+
+    getPowerInvitePage() {
+      this.axios
+          .get(this.api.getPowerInvitePage, {
+            params: {
+              pageNum: this.pageNum,
+              pageSize: 10,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.getPowerInvitePageList = res.data.list
+              this.total = res.data.total
+              this.totalPage = res.data.totalPage
             }
+          })
+    },
+    getStoreInvitePage() {
+      this.axios
+          .get(this.api.getStoreInvitePage, {
+            params: {
+              pageNum: this.pageNum2,
+              pageSize: 10,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.getStoreInvitePageList = res.data.list
+              this.total2 = res.data.total
+              this.totalPage2 = res.data.totalPage
+            }
+          })
+    },
+    topAccountTxgetPage() {
+      this.axios
+          .get(this.api.topAccountTxgetPage, {
+            params: {
+              pageNum: this.pageNum3,
+              pageSize: 10,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.topAccountTxgetPageList = res.data.list
+              this.total3 = res.data.total
+              this.totalPage3 = res.data.totalPage
+            }
+          })
+    },
 
-            this.shareUrl =
-              window.location.origin + '/#/?invitedCode=' + res.data.invitedCode
+    getPowerInviteInfo() {
+      this.axios
+          .get(this.api.getPowerInviteInfo, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.inviteInfo = res.data
+            }
+          })
+    },
+    getStoreInviteInfo() {
+      this.axios
+          .get(this.api.getStoreInviteInfo, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.inviteInfo2 = res.data
+              console.log("this.inviteInfo2",this.inviteInfo2)
+            }
+          })
+    },
+    topUser() {
+      this.axios
+          .get(this.api.topUser, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              const TronWeb = require('tronweb')
+              const tronWeb = new TronWeb({
+                fullHost: 'https://api.trongrid.io',
+              })
+              this.detail2 = res.data
+              this.btcTransferAddress = res.data.btcTransferAddress
+              this.btcTransferAddress2 = res.data.btcTransferAddress
+              if (res.data.tronWallet) {
+                this.tronUsdtaddress = tronWeb.address.fromHex(
+                    res.data.tronWallet,
+                )
+                this.tronUsdtaddress2 = tronWeb.address.fromHex(
+                    res.data.tronWallet,
+                )
+              }
 
-            this.totalAmount = res.data.totalAmount
-            this.totalInviteUser = res.data.totalInviteUser
-            this.grade = res.data.grade || 1
-          }
-        })
+              this.shareUrl =
+                  window.location.origin + '/#/?invitedCode=' + res.data.invitedCode
+
+              this.totalAmount = res.data.totalAmount
+              this.totalInviteUser = res.data.totalInviteUser
+              this.grade = res.data.grade || 1
+            }
+          })
     },
     getAccountsFn3() {
       this.axios
-        .get(this.api.getAccounts, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            res.data.forEach((e) => {
-              if (e.symbol == 'USDT') {
-                res.data.push({
-                  chainId: -1,
-                  symbol: 'TRON USDT',
-                  icon: require('../../assets/new/32.png'),
-                  availableBalance: e.availableBalance,
-                })
-              }
-            })
+          .get(this.api.getAccounts, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              res.data.forEach((e) => {
+                if (e.symbol == 'USDT') {
+                  res.data.push({
+                    chainId: -1,
+                    symbol: 'TRON USDT',
+                    icon: require('../../assets/new/32.png'),
+                    availableBalance: e.availableBalance,
+                  })
+                }
+              })
 
-            let chunkSize = 3
-            this.ioconList = []
-            for (let i = 0; i < res.data.length; i += chunkSize) {
-              let chunk = res.data.slice(i, i + chunkSize)
-              this.ioconList.push(chunk)
+              let chunkSize = 3
+              this.ioconList = []
+              for (let i = 0; i < res.data.length; i += chunkSize) {
+                let chunk = res.data.slice(i, i + chunkSize)
+                this.ioconList.push(chunk)
+              }
+              console.log(this.ioconList)
             }
-            console.log(this.ioconList)
-          }
-        })
+          })
     },
     async updateWithdrawBTCAddress() {
       var self = this
@@ -825,37 +831,37 @@ export default {
         return
       }
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.updateWithdrawBTCAddress, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              btcTransferAddress: self.btcTransferAddress,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.topUser()
-                $('.alertBtnColse').click()
-                $('.modal-body-success').html(this.$t('mine.t60'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('mine.t61'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || this.$t('mine.t61'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.updateWithdrawBTCAddress, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  btcTransferAddress: self.btcTransferAddress,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.topUser()
+                    $('.alertBtnColse').click()
+                    $('.modal-body-success').html(this.$t('mine.t60'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('mine.t61'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || this.$t('mine.t61'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     async updateTRONUSDTAddress() {
       var self = this
@@ -870,38 +876,38 @@ export default {
       })
 
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.updateTRONUSDTAddress, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              tronUsdtaddress: tronWeb.address.toHex(self.tronUsdtaddress),
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.topUser()
-                $('.alertBtnColse').click()
-                $('.modal-body-success').html(this.$t('mine.t60'))
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.updateTRONUSDTAddress, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  tronUsdtaddress: tronWeb.address.toHex(self.tronUsdtaddress),
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.topUser()
+                    $('.alertBtnColse').click()
+                    $('.modal-body-success').html(this.$t('mine.t60'))
 
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('mine.t61'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || this.$t('mine.t61'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('mine.t61'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || this.$t('mine.t61'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     async exchangeBTC2USDT() {
       var self = this
@@ -912,104 +918,104 @@ export default {
       }
 
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.exchangeBTC2USDT, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              chainId: getChainId,
-              amount: self.availableBalanceBtc,
-            })
-            .then((res) => {
-              self.getAccountsFn3()
-              if (res.code == 200) {
-                $('.modal-body-success').html(this.$t('BDCF.t12'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('BDCF.t13'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || this.$t('BDCF.t13'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.exchangeBTC2USDT, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  chainId: getChainId,
+                  amount: self.availableBalanceBtc,
+                })
+                .then((res) => {
+                  self.getAccountsFn3()
+                  if (res.code == 200) {
+                    $('.modal-body-success').html(this.$t('BDCF.t12'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('BDCF.t13'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || this.$t('BDCF.t13'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     topStoreOrder() {
       this.axios
-        .get(this.api.topStoreOrder, {
-          params: {
-            pageNum: 1,
-            pageSize: 10000,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.getPageList = res.data.list
-          }
-        })
+          .get(this.api.topStoreOrder, {
+            params: {
+              pageNum: 1,
+              pageSize: 10000,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.getPageList = res.data.list
+            }
+          })
     },
     powergetPage() {
       this.axios
-        .get(this.api.powergetPage, {
-          params: {
-            pageNum: 1,
-            pageSize: 10000,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.powergetPageList = res.data.records
-          }
-        })
+          .get(this.api.powergetPage, {
+            params: {
+              pageNum: 1,
+              pageSize: 10000,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.powergetPageList = res.data.records
+            }
+          })
     },
     powerConfig() {
       this.axios
-        .get(this.api.powerConfig, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.detail = res.data
-          }
-        })
+          .get(this.api.powerConfig, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.detail = res.data
+            }
+          })
     },
 
     getAccountsFn() {
       this.axios
-        .get(this.api.getAccounts, {
-          params: {
-            symbol: 'BTC',
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.availableBalanceBtc = res.data[0].availableBalance
-          }
-        })
+          .get(this.api.getAccounts, {
+            params: {
+              symbol: 'BTC',
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.availableBalanceBtc = res.data[0].availableBalance
+            }
+          })
     },
 
     getAccountsFn2() {
       this.axios
-        .get(this.api.getAccounts, {
-          params: {
-            symbol: 'USDT',
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.availableBalanceUsdt = res.data[0].availableBalance
-          }
-        })
+          .get(this.api.getAccounts, {
+            params: {
+              symbol: 'USDT',
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.availableBalanceUsdt = res.data[0].availableBalance
+            }
+          })
     },
 
     // 初始化 usdt
@@ -1031,41 +1037,41 @@ export default {
         return
       }
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.internalTransfer, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              amount: self.amount,
-              receiveAddress: self.receiveAddress,
-              symbol: 'USDT',
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.amount = ''
-                self.receiveAddress = ''
-                self.getAccountsFn3()
-                $('.alertBtnColse').click()
-                $('.modal-body-success').html(this.$t('mine.t64'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('mine.t65'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(e.msg || this.$t('mine.t65'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.internalTransfer, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  amount: self.amount,
+                  receiveAddress: self.receiveAddress,
+                  symbol: 'USDT',
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.amount = ''
+                    self.receiveAddress = ''
+                    self.getAccountsFn3()
+                    $('.alertBtnColse').click()
+                    $('.modal-body-success').html(this.$t('mine.t64'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('mine.t65'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(e.msg || this.$t('mine.t65'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     // 获取代币金额  暂时没用到
     async getBalanceOfFn() {
@@ -1098,62 +1104,63 @@ export default {
       console.log(fromAddress)
       console.log(usdtAbiInitFn)
       usdtAbiInitFn.methods
-        .transfer(
-          self.usdtAddress,
-          self.scientificToNumber(value * Math.pow(10, 18)),
-        )
-        .send({
-          from: fromAddress[0],
-          gasLimit: 210000,
-          gasPrice: self.gasPrice,
-        })
+          .transfer(
+              self.usdtAddress,
+              self.scientificToNumber(value * Math.pow(10, 18)),
+          )
+          .send({
+            from: fromAddress[0],
+            gasLimit: 210000,
+            gasPrice: self.gasPrice,
+          })
 
-        .on('transactionHash', function (hash) {
-          console.log(hash, '-----------hash')
-          self.loading = true
-          self.txHash = hash
-          self.loadingText =
-            window.vm.$t('pay.transaction_is_being_confirmed') + '...'
-        })
-        .on('receipt', function (receipt) {
-          console.log(receipt, '-----------receipt')
-        })
-        .on('confirmation', function (confirmationNumber, receipt) {
-          console.log(confirmationNumber, receipt, '-----------confirmation')
+          .on('transactionHash', function (hash) {
+            console.log(hash, '-----------hash')
+            self.loading = true
+            self.txHash = hash
+            self.loadingText =
+                window.vm.$t('pay.transaction_is_being_confirmed') + '...'
+          })
+          .on('receipt', function (receipt) {
+            console.log(receipt, '-----------receipt')
+          })
+          .on('confirmation', function (confirmationNumber, receipt) {
+            console.log(confirmationNumber, receipt, '-----------confirmation')
 
-          if (confirmationNumber == 0) {
+            if (confirmationNumber == 0) {
+              self.loading = false
+              self.loadingText = ''
+              $('.copyHash').click()
+            }
+          })
+          .on('error', function (error, receipt) {
+            console.log(error, receipt, '-----------error')
+
             self.loading = false
             self.loadingText = ''
-            $('.copyHash').click()
-          }
-        })
-        .on('error', function (error, receipt) {
-          console.log(error, receipt, '-----------error')
 
-          self.loading = false
-          self.loadingText = ''
-
-          self.$message({
-            type: 'info',
-            message: error.message || error.stack,
+            self.$message({
+              type: 'info',
+              message: error.message || error.stack,
+            })
           })
-        })
     },
 
     personal_signFn() {
       let self = this
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          console.log(signature)
-        })
-        .catch((e) => {})
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            console.log(signature)
+          })
+          .catch((e) => {
+          })
     },
   },
 }
@@ -1164,30 +1171,33 @@ export default {
   display: flex;
   margin-top: 20px;
   background: rgba(36, 38, 39, 0.7);
-    border-radius: 12px 12px 12px 12px;
-    border: 1px solid rgba(122, 191, 255, 0.66);
-    align-items: center;
-    padding: 0 12px;
+  border-radius: 12px 12px 12px 12px;
+  border: 1px solid rgba(122, 191, 255, 0.66);
+  align-items: center;
+  padding: 0 12px;
 
-    height: 56px;
+  height: 56px;
 
   p,
   a {
     color: #fff;
     font-size: 15px;
-    width:33.3%
+    width: 33.3%
 
-    
+
   }
-  a{
+
+  a {
     color: #2ae1ff;
     display: block;
   }
 }
+
 .com {
   padding: 12px;
   position: relative;
   z-index: 10;
+
   .t1 {
     height: 56px;
     background: rgba(36, 38, 39, 0.7);
@@ -1197,27 +1207,32 @@ export default {
     align-items: center;
     justify-content: space-between;
     padding: 0 12px;
+
     div {
       font-weight: 600;
       font-size: 15px;
       color: #0283fa;
       line-height: 18px;
     }
+
     img {
       height: 100%;
       height: 50px;
     }
   }
+
   .t2 {
     font-weight: 500;
     font-size: 16px;
     color: #ffffff;
     margin: 33px 0 20px;
     position: relative;
+
     p {
       position: relative;
       z-index: 1;
     }
+
     img {
       width: 62px;
       position: absolute;
@@ -1226,6 +1241,7 @@ export default {
       z-index: 0;
     }
   }
+
   .t3 {
     height: 228px;
     background: rgba(36, 38, 39, 0.7);
@@ -1233,20 +1249,24 @@ export default {
     border: 1px solid #5b89b3;
     padding: 15px 12px;
     overflow-y: scroll;
+
     .bors {
       height: 147px;
     }
+
     > div {
       > div {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 22px;
+
         p {
           font-weight: 500;
           font-size: 12px;
           color: #ffffff;
         }
+
         span {
           font-weight: bold;
           font-size: 15px;
@@ -1256,6 +1276,7 @@ export default {
           width: 200px;
           word-wrap: break-word;
         }
+
         .save {
           min-width: 56px;
           height: 28px;
@@ -1277,20 +1298,24 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       p {
         font-size: 14px;
         letter-spacing: 4px;
       }
+
       img {
         width: 20px;
         height: 20px;
       }
     }
   }
+
   .saveAll {
     display: flex;
     justify-content: space-between;
     margin: 40px 0;
+
     > div {
       width: 164px;
       height: 44px;
@@ -1299,12 +1324,14 @@ export default {
       text-align: center;
       line-height: 44px;
     }
+
     .usdSave {
       background: linear-gradient(90deg, #0dffff 0%, #2ae1ff 100%);
       box-shadow: 0px 3px 16px 0px rgba(42, 224, 255, 0.42);
       border-radius: 8px 8px 8px 8px;
     }
   }
+
   .ipt {
     font-size: 15px;
     display: flex;
@@ -1328,6 +1355,7 @@ export default {
       background: linear-gradient(90deg, #0dffff 0%, #2ae1ff 100%);
       border-radius: 12px 12px 12px 12px;
     }
+
     input[placeholder],
     [placeholder],
     *[placeholder] {
@@ -1335,31 +1363,38 @@ export default {
       width: 100%;
     }
   }
+
   .activeBg {
     border: 1px solid #0283fa;
     background: #121315;
   }
+
   .bor {
     border-radius: 12px 12px 12px 12px;
     border: 1px solid #5b89b3;
     padding: 12px;
   }
+
   .line {
     > div {
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #535860;
       align-items: center;
+
       img {
         width: 20px;
         margin-left: 8px;
       }
+
       padding: 14px 0;
+
       > p:nth-child(1) {
         font-weight: 400;
         font-size: 14px;
         color: #ffffff;
       }
+
       > p:nth-child(2) {
         font-weight: 400;
         font-size: 16px;
@@ -1370,6 +1405,7 @@ export default {
       }
     }
   }
+
   .list {
     .t11 {
       display: flex;
@@ -1384,22 +1420,27 @@ export default {
         width: 30%;
         word-wrap: break-word;
       }
+
       > p:nth-child(1) {
         width: 12%;
       }
+
       > p:nth-child(2) {
         text-align: center;
         width: 34%;
       }
+
       > p:nth-child(3) {
         text-align: center;
         width: 26%;
       }
+
       > p:nth-child(4) {
         text-align: right;
         width: 28%;
       }
     }
+
     .t12 {
       border-bottom: 1px solid #535860;
       padding: 15px 0;
@@ -1408,21 +1449,25 @@ export default {
         color: #fff;
       }
     }
+
     .t4 {
       width: 120px;
       margin: 20px auto 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       p {
         font-size: 14px;
         letter-spacing: 4px;
       }
+
       img {
         width: 20px;
         height: 20px;
       }
     }
+
     .list011 {
       p:nth-child(3) {
         text-align: right;
@@ -1430,31 +1475,38 @@ export default {
     }
   }
 }
+
 .list012 {
   p:nth-child(1) {
     width: 22% !important;
   }
+
   p:nth-child(2) {
     width: 30% !important;
   }
+
   p:nth-child(3) {
     width: 30% !important;
   }
+
   p:nth-child(4) {
     text-align: right;
 
     width: 25% !important;
   }
 }
+
 .iptList {
   margin-bottom: 20px !important;
   margin-top: 10px !important;
+
   > p {
     border-radius: 6px;
     height: 40px;
     margin-bottom: 10px;
     border: 1px solid rgba(0, 198, 255, 0.3);
     background: rgba(0, 198, 255, 0.1);
+
     input {
       height: 40px;
       width: 100%;
@@ -1463,16 +1515,19 @@ export default {
     }
   }
 }
+
 .bg1 {
   .gif1 {
     width: 100%;
     position: absolute;
     opacity: 0.5;
   }
+
   .titleIcon {
     text-align: center;
     position: relative;
     z-index: 10;
+
     img {
       width: 200px;
       margin: 60px auto 0;
