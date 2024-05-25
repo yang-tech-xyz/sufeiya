@@ -78,9 +78,9 @@ if (TFMine.PWA.enable) {
 // Page Loader with preload
 //----------------------------------------------------------------------
 setTimeout(() => {
-    loader.setAttribute("style", "pointer-events: none; opacity: 0; transition: 0.2s ease-in-out;");
+    loader && loader.setAttribute("style", "pointer-events: none; opacity: 0; transition: 0.2s ease-in-out;");
     setTimeout(() => {
-        loader.setAttribute("style", "display: none;")
+        loader && loader.setAttribute("style", "display: none;")
     }, 1000);
 }, 450);
 //-----------------------------------------------------------------------
@@ -94,14 +94,14 @@ function goBackAnimation() {
         window.history.go(-1);
     }, 300);
 }
+
 // Go Back Button
 var goBackButton = document.querySelectorAll(".goBack");
 goBackButton.forEach(function (el) {
     el.addEventListener("click", function () {
         if (TFMine.Animation.goBack) {
             goBackAnimation();
-        }
-        else {
+        } else {
             window.history.go(-1);
         }
 
@@ -175,12 +175,12 @@ formControl.forEach(function (el) {
     });
     // empty check
     el.addEventListener("keyup", log);
+
     function log(e) {
         var inputCheck = this.value.length;
         if (inputCheck > 0) {
             this.parentElement.classList.add("not-empty")
-        }
-        else {
+        } else {
             this.parentElement.classList.remove("not-empty")
         }
     }
@@ -197,8 +197,7 @@ searchboxToggle.forEach(function (el) {
         var a = search.classList.contains("show")
         if (a) {
             search.classList.remove("show")
-        }
-        else {
+        } else {
             search.classList.add("show")
             search.querySelector(".form-control").focus();
         }
@@ -331,8 +330,7 @@ uploadComponent.forEach(function (el) {
             fileLabel.classList.add('file-uploaded');
             fileLabel.style.backgroundImage = "url(" + tmppath + ")";
             fileLabelText.innerHTML = name;
-        }
-        else {
+        } else {
             fileLabel.classList.remove("file-uploaded")
             fileLabelText.innerHTML = filelabelDefault;
         }
@@ -353,6 +351,7 @@ function closeNotificationBox() {
         el.classList.remove("show")
     })
 }
+
 function notification(target, time) {
     var a = document.getElementById(target);
     closeNotificationBox()
@@ -366,6 +365,7 @@ function notification(target, time) {
         }, time);
     }
 }
+
 // close notification
 notificationCloseButton.forEach(function (el) {
     el.addEventListener("click", function (e) {
@@ -395,6 +395,7 @@ function closeToastBox() {
         el.classList.remove("show")
     })
 }
+
 function toastbox(target, time) {
     var a = document.getElementById(target);
     closeToastBox()
@@ -408,6 +409,7 @@ function toastbox(target, time) {
         }, time);
     }
 }
+
 // close button toast
 toastCloseButton.forEach(function (el) {
     el.addEventListener("click", function (e) {
@@ -435,26 +437,25 @@ function iosAddtoHome() {
     var modal = new bootstrap.Modal(document.getElementById('ios-add-to-home-screen'))
     modal.toggle()
 }
+
 function androidAddtoHome() {
     var modal = new bootstrap.Modal(document.getElementById('android-add-to-home-screen'))
     modal.toggle()
 }
+
 function AddtoHome(time, once) {
     if (once) {
         var AddHomeStatus = localStorage.getItem("TFMineAddtoHome");
         if (AddHomeStatus === "1" || AddHomeStatus === 1) {
             // already showed up
-        }
-        else {
+        } else {
             localStorage.setItem("TFMineAddtoHome", 1)
             window.addEventListener('load', () => {
                 if (navigator.standalone) {
                     // if app installed ios home screen
-                }
-                else if (matchMedia('(display-mode: standalone)').matches) {
+                } else if (matchMedia('(display-mode: standalone)').matches) {
                     // if app installed android home screen
-                }
-                else {
+                } else {
                     // if app is not installed
                     if (androidDetection) {
                         setTimeout(() => {
@@ -469,16 +470,13 @@ function AddtoHome(time, once) {
                 }
             });
         }
-    }
-    else {
+    } else {
         window.addEventListener('load', () => {
             if (navigator.standalone) {
                 // app loaded to ios
-            }
-            else if (matchMedia('(display-mode: standalone)').matches) {
+            } else if (matchMedia('(display-mode: standalone)').matches) {
                 // app loaded to android
-            }
-            else {
+            } else {
                 // app not loaded
                 if (androidDetection) {
                     setTimeout(() => {
@@ -495,6 +493,7 @@ function AddtoHome(time, once) {
     }
 
 }
+
 //-----------------------------------------------------------------------
 
 
@@ -532,17 +531,16 @@ function switchDarkModeCheck(value) {
         el.checked = value
     })
 }
+
 // if dark mode on
 if (checkDarkModeStatus === 1 || checkDarkModeStatus === "1" || pageBody.classList.contains('dark-mode')) {
     switchDarkModeCheck(true);
     if (pageBodyActive) {
         // dark mode already activated
-    }
-    else {
+    } else {
         pageBody.classList.add("dark-mode")
     }
-}
-else {
+} else {
     switchDarkModeCheck(false);
 }
 switchDarkMode.forEach(function (el) {
@@ -553,8 +551,7 @@ switchDarkMode.forEach(function (el) {
             pageBody.classList.remove("dark-mode");
             localStorage.setItem("TFMineDarkmode", "0");
             switchDarkModeCheck(false);
-        }
-        else {
+        } else {
             pageBody.classList.add("dark-mode")
             switchDarkModeCheck(true);
             localStorage.setItem("TFMineDarkmode", "1");
@@ -568,25 +565,24 @@ switchDarkMode.forEach(function (el) {
 // Cookies Box
 if (document.querySelector(".offcanvas") === null) {
     // Doesn't exist.
-}
-else {
+} else {
     var elCookiesBox = new bootstrap.Offcanvas(document.getElementById('cookiesbox'));
     var CookiesStatus = localStorage.getItem("TFMineCookiesStatus")
+
     function CookiesBox(time) {
         if (CookiesStatus === "1" || CookiesStatus === 1) {
             // Cookies already accepted.
-        }
-        else {
+        } else {
             if (time) {
                 setTimeout(() => {
                     elCookiesBox.toggle();
                 }, time);
-            }
-            else {
+            } else {
                 elCookiesBox.toggle();
             }
         }
     }
+
     document.querySelectorAll(".accept-cookies").forEach(function (el) {
         el.addEventListener("click", function () {
             localStorage.setItem("TFMineCookiesStatus", "1")
@@ -611,14 +607,15 @@ function testMode() {
     function testModeMsg(value, msg) {
         if (value) {
             console.log("%c|" + "%c " + msg + " : " + "%cEnabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorSuccess);
-        }
-        else if (value == false) {
+        } else if (value == false) {
             console.log("%c|" + "%c " + msg + " : " + "%cDisabled", "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", colorDanger);
         }
     }
+
     function testModeInfo(value, msg) {
         console.log("%c|" + "%c " + msg + " : " + "%c" + value, "color: #444; font-size :1.2em; font-weight: bold;", "color: inherit", "color:#000e17; font-weight: bold;");
     }
+
     function testModeSubtitle(msg) {
         console.log("%c # " + msg, "color: #FFF; background: #444; font-size: 1.2em; padding: 8px 16px; margin-top: 16px; border-radius: 12px 12px 0 0");
     }
@@ -638,14 +635,11 @@ function testMode() {
     // Device
     if (iosDetection) {
         testModeInfo("iOS", "Device")
-    }
-    else if (androidDetection) {
+    } else if (androidDetection) {
         testModeInfo("Android", "Device")
-    }
-    else if (windowsPhoneDetection) {
+    } else if (windowsPhoneDetection) {
         testModeInfo("Windows Phone", "Device")
-    }
-    else {
+    } else {
         testModeInfo("Not a Mobile Device", "Device")
     }
     //Language
@@ -653,21 +647,20 @@ function testMode() {
     // Theme
     if (pageBody.classList.contains("dark-mode")) {
         testModeInfo("Dark Mode", "Current theme")
-    }
-    else {
+    } else {
         testModeInfo("Light Mode", "Current theme")
     }
     // Online Status
     if (window.navigator.onLine) {
         testModeInfo("Online", "Internet connection")
-    }
-    else {
+    } else {
         testModeInfo("Offline", "Internet connection")
     }
 
     testModeSubtitle("ANIMATIONS")
     testModeMsg(TFMine.Animation.goBack, "Go Back")
 }
+
 function themeTesting() {
     var word = TFMine.Test.word;
     var value = "";

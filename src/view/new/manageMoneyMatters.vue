@@ -4,6 +4,7 @@
     <div class="bg1">
       <div><img class="gif1" src="../../assets/img/1.gif" alt=""/></div>
       <div class="titleIcon"><img :src="$t('manageMoneyMatters.img1')" alt=""/></div>
+      <div class="t3-rename">{{ $t('mine.t67') }}</div>
     </div>
     <div class="t1">
       <div class="t2">
@@ -29,7 +30,6 @@
         >
           <input type="number" :placeholder="$t('BDCF.t5')" v-model="amount"/>
         </div>
-        <div class="t3-rename">{{ $t('mine.t67') }}</div>
 
         <div
             class="t3"
@@ -408,6 +408,17 @@ export default {
 .manageMoneyMatters {
   padding-bottom: 40px;
 
+  .t3-rename{
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(89deg, #00ffff, #00ffff, #5994eb);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0 30px;
+    line-height: 35px;
+    margin-top: 25px;
+  }
+
   .bg1 {
     margin-top: -30px;
 
@@ -445,13 +456,7 @@ export default {
 
 
 
-      .t3-rename{
-        font-size: 0.28rem;
-        margin-left: 5px;
-        margin-top: 4px;
-        margin-bottom: 6px;
-        color:red;
-      }
+
       .t3 {
         height: 44px;
         border-radius: 12px 12px 12px 12px;
