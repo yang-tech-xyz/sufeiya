@@ -263,27 +263,27 @@ export default {
       }
       setTimeout(() => {
         if (window.ethereum) {
-          // if (self.walletAddress != window.ethereum.selectedAddress) {
-          //   self.bindwallet()
-          // }
+          if (self.walletAddress != window.ethereum.selectedAddress) {
+            self.bindwallet()
+          }
         }
       }, 500)
     } else {
       self.bindwallet()
     }
-    if(window.tp){
-      try{
-        window.tp.on('accountChanged', (newAccount) => {
-          console.log('账号切换')
-          localStorage.removeItem('tophis_signature')
-
-          self.breakFn()
-          self.bindwallet()
-        });
-      }catch (e){
-        console.error(e)
-      }
-    }
+    // if(window.tp){
+    //   try{
+    //     window.tp.on('accountChanged', (newAccount) => {
+    //       console.log('账号切换')
+    //       localStorage.removeItem('tophis_signature')
+    //
+    //       self.breakFn()
+    //       self.bindwallet()
+    //     });
+    //   }catch (e){
+    //     console.error(e)
+    //   }
+    // }
     if (window.ethereum) {
       //监听账号切换
       window.ethereum.on('accountsChanged', function (accounts) {
