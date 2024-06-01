@@ -77,6 +77,7 @@
           <p>{{ $t('manageMoneyMatters.t8') }}</p>
           <p>{{ $t('manageMoneyMatters.t9') }}</p>
           <p>{{ $t('manageMoneyMatters.t10') }}</p>
+          <p>{{ $t('manageMoneyMatters.t21') }}</p>
         </div>
         <div
             class="t11 t12"
@@ -101,6 +102,7 @@
               {{ $t('manageMoneyMatters.t13') }}
             </span>
           </p>
+          <p> {{ item.releaseDate }}</p>
         </div>
       </div>
       <div class="mt-2" v-if="!topStoreOrdergetPageList.length">

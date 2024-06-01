@@ -9,7 +9,7 @@ window._GlobalConfig = {
     // Gat Pool V4
 
   /* Deploy */
-  currentEnv: 'local', // pro test local
+  currentEnv: 'pro', // pro test local
 
     /* localhost */
     local: {

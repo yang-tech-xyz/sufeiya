@@ -169,6 +169,7 @@ const zh_CN = {
     t67:`The digital assets you deposit will enter the platform to obtain BTC miner's dividends, and you will receive different stable income dividends based on the different months of storage.`,
     t68:`Total number of teams`,
     t69:`units`,
+    t70:'Total Team Staking Amount',
   },
 }
 

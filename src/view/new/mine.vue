@@ -257,6 +257,10 @@
             <p>{{ $t('mine.t23') }}</p>
             <p>{{ inviteInfo2.totalStoreIncome }}U</p>
           </div>
+          <div>
+            <p>{{ $t('mine.t70') }}</p>
+            <p>{{ inviteInfo2.totalStoreAmount }}U</p>
+          </div>
         </div>
         <div
             class="list list011"
