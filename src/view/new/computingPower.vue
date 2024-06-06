@@ -1,10 +1,10 @@
 <template>
   <div class="computingPower" @touchstart="isType2 = ''">
-    <inc_menu />
+    <inc_menu/>
     <div class="bg1" @click="forAllFn">
-      <div><img class="gif1" src="../../assets/img/1.gif" alt="" /></div>
+      <div><img class="gif1" src="../../assets/img/1.gif" alt=""/></div>
       <div class="titleIcon">
-        <img :src="$t('computingPower.img1')" alt="" />
+        <img :src="$t('computingPower.img1')" alt=""/>
       </div>
     </div>
     <div class="com">
@@ -16,28 +16,28 @@
 
         <div class="t2">
           <div
-            class="t3"
-            @touchstart.stop="isType2 = 1"
-            @click="
+              class="t3"
+              @touchstart.stop="isType2 = 1"
+              @click="
               isType = 1
               drawer = true
             "
-            :class="isType2 == 1 ? 'activeBg' : ''"
+              :class="isType2 == 1 ? 'activeBg' : ''"
           >
             <div>
-              <img v-if="icon1" class="icon1" :src="icon1" alt="" />
+              <img v-if="icon1" class="icon1" :src="icon1" alt=""/>
               <p>{{ symbol || $t('computingPower.t1') }}</p>
             </div>
             <div>
-              <img class="icon2" src="../../assets/new/16.png" alt="" />
+              <img class="icon2" src="../../assets/new/16.png" alt=""/>
             </div>
           </div>
           <div
-            class="ipt"
-            @touchstart.stop="isType2 = 2"
-            :class="isType2 == 2 ? 'activeBg' : ''"
+              class="ipt"
+              @touchstart.stop="isType2 = 2"
+              :class="isType2 == 2 ? 'activeBg' : ''"
           >
-            <input :placeholder="$t('computingPower.t2')" v-model="number" />
+            <input :placeholder="$t('computingPower.t2')" v-model="number"/>
             <p class="save" @click="getGasPriceFn">
               {{ $t('computingPower.t3') }}
             </p>
@@ -45,39 +45,39 @@
         </div>
         <div class="t2">
           <div
-            class="t3"
-            @touchstart.stop="isType2 = 3"
-            :class="isType2 == 3 ? 'activeBg' : ''"
-            @click="
+              class="t3"
+              @touchstart.stop="isType2 = 3"
+              :class="isType2 == 3 ? 'activeBg' : ''"
+              @click="
               isType = 2
               drawer = true
             "
           >
             <div>
-              <img v-if="icon2" class="icon1" :src="icon2" alt="" />
+              <img v-if="icon2" class="icon1" :src="icon2" alt=""/>
               {{ symbol2 || $t('computingPower.t1') }}
             </div>
             <div>
-              <img class="icon2" src="../../assets/new/16.png" alt="" />
+              <img class="icon2" src="../../assets/new/16.png" alt=""/>
             </div>
           </div>
           <div
-            class="ipt"
-            @touchstart.stop="isType2 = 4"
-            :class="isType2 == 4 ? 'activeBg' : ''"
+              class="ipt"
+              @touchstart.stop="isType2 = 4"
+              :class="isType2 == 4 ? 'activeBg' : ''"
           >
-            <input :placeholder="$t('computingPower.t5')" v-model="number2" />
+            <input :placeholder="$t('computingPower.t5')" v-model="number2"/>
             <p class="save" @click="buyOrder">{{ $t('computingPower.t6') }}</p>
           </div>
         </div>
         <div class="t2">
           <div
-            class="ipt"
-            style="width: 100%;"
-            @touchstart.stop="isType2 = 5"
-            :class="isType2 == 5 ? 'activeBg' : ''"
+              class="ipt"
+              style="width: 100%;"
+              @touchstart.stop="isType2 = 5"
+              :class="isType2 == 5 ? 'activeBg' : ''"
           >
-            <input style="width: 100%;" :placeholder="$t('computingPower.t20')" v-model="hash2" />
+            <input style="width: 100%;" :placeholder="$t('computingPower.t20')" v-model="hash2"/>
             <p class="save" @click="rechargeFn(hash2, 1)">
               {{ $t('computingPower.t0') }}
             </p>
@@ -87,11 +87,11 @@
       <div class="t4">
         <div class="t5">
           <div
-            v-for="(item, idx) in claimedList"
-            :key="idx"
-            v-if="idx <= 3"
-            :class="'example' + idx"
-            @click="topPowerDailyIncomeclaim(item.id)"
+              v-for="(item, idx) in claimedList"
+              :key="idx"
+              v-if="idx <= 3"
+              :class="'example' + idx"
+              @click="topPowerDailyIncomeclaim(item.id)"
           >
             <div>
               <div></div>
@@ -102,15 +102,15 @@
             <div class="time">{{ item.processDate }}</div>
           </div>
           <div
-            class="claimAll example4"
-            @click="claimAll"
-            v-if="claimedList.length"
+              class="claimAll example4"
+              @click="claimAll"
+              v-if="claimedList.length"
           >
             {{ $t('computingPower.t7') }}
           </div>
         </div>
         <div class="gitIcon">
-          <img src="../../assets/new/1.gif" alt="" />
+          <img src="../../assets/new/1.gif" alt=""/>
         </div>
         <div class="t6">
           <div class="t7">
@@ -134,7 +134,7 @@
       </div>
       <div class="t9">
         <p>{{ $t('computingPower.t10') }}</p>
-        <img src="../../assets/new/25.png" alt="" />
+        <img src="../../assets/new/25.png" alt=""/>
       </div>
       <div class="list" v-if="powergetPageList && powergetPageList.length">
         <div class="t11">
@@ -156,7 +156,7 @@
         <div class="card text-center pd2">
           <div class="card-body">
             <div class="mb-2 mt-2">
-              <img class="icon_empty" src="../../assets/new/27.png" alt="" />
+              <img class="icon_empty" src="../../assets/new/27.png" alt=""/>
               <p class="noList">{{ $t('computingPower.t16') }}</p>
             </div>
           </div>
@@ -165,68 +165,68 @@
     </div>
     <div class="navigationBar">
       <div @click="goTo('/')">
-        <p><img src="../../assets/new/10.png" alt="" /></p>
+        <p><img src="../../assets/new/10.png" alt=""/></p>
         <p>{{ $t('tab.market') }}</p>
       </div>
       <div class="active" @click="goTo('/computingPower')">
-        <p><img src="../../assets/new/8.png" alt="" /></p>
+        <p><img src="../../assets/new/8.png" alt=""/></p>
         <p>{{ $t('tab.computingPower') }}</p>
       </div>
       <div @click="goTo('/manageMoneyMatters')">
-        <p><img src="../../assets/new/7.png" alt="" /></p>
+        <p><img src="../../assets/new/7.png" alt=""/></p>
         <p>{{ $t('tab.manageMoneyMatters') }}</p>
       </div>
       <div @click="goTo('/BDCF')">
-        <p><img src="../../assets/new/9.png" alt="" /></p>
+        <p><img src="../../assets/new/9.png" alt=""/></p>
         <p>{{ $t('tab.BTCF') }}</p>
       </div>
       <div @click="goTo('/mine')">
-        <p><img src="../../assets/new/11.png" alt="" /></p>
+        <p><img src="../../assets/new/11.png" alt=""/></p>
         <p>{{ $t('tab.mine') }}</p>
       </div>
     </div>
     <div class="hig"></div>
     <el-drawer
-      :title="$t('BDCF.t11')"
-      :visible.sync="drawer"
-      :direction="'btt'"
+        :title="$t('BDCF.t11')"
+        :visible.sync="drawer"
+        :direction="'btt'"
     >
       <div class="list2" v-if="isType == 1">
         <div
-          v-for="(item, idx) in chainList"
-          :key="idx"
-          @click="drawerFn(item)"
+            v-for="(item, idx) in chainList"
+            :key="idx"
+            @click="drawerFn(item)"
         >
-          <p><img :src="item.icon" alt="" /></p>
+          <p><img :src="item.icon" alt=""/></p>
           <p>{{ item.symbol }}</p>
         </div>
       </div>
       <div class="list2" v-if="isType == 2">
         <div
-          v-if="item.powerEnabled"
-          v-for="(item, idx) in list"
-          :key="idx"
-          @click="drawerFn(item)"
+            v-if="item.powerEnabled"
+            v-for="(item, idx) in list"
+            :key="idx"
+            @click="drawerFn(item)"
         >
-          <p><img :src="item.icon" alt="" /></p>
+          <p><img :src="item.icon" alt=""/></p>
           <p>{{ item.symbol }}</p>
         </div>
       </div>
     </el-drawer>
     <div
-      class="DialogBasicPay"
-      data-bs-toggle="modal"
-      data-bs-target="#DialogBasicPay"
+        class="DialogBasicPay"
+        data-bs-toggle="modal"
+        data-bs-target="#DialogBasicPay"
     >
       <div class="in"></div>
     </div>
     <div
-      class="modal fade dialogbox"
-      style="z-index: 100000;"
-      id="DialogBasicPay"
-      data-bs-backdrop="static"
-      tabindex="-1"
-      role="dialog"
+        class="modal fade dialogbox"
+        style="z-index: 100000;"
+        id="DialogBasicPay"
+        data-bs-backdrop="static"
+        tabindex="-1"
+        role="dialog"
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -239,11 +239,11 @@
             <div class="alts">{{ $t('computingPower.t17') }}</div>
             <p>
               <input
-                disabled
-                type="text"
-                :placeholder="$t('computingPower.t4')"
-                style="font-size: 12px;"
-                v-model="tronObj.erc20Address"
+                  disabled
+                  type="text"
+                  :placeholder="$t('computingPower.t4')"
+                  style="font-size: 12px;"
+                  v-model="tronObj.erc20Address"
               />
               <span class="save" @click="copySubmit(tronObj.erc20Address)">
                 {{ $t('computingPower.t18') }}
@@ -253,11 +253,11 @@
 
             <p>
               <input
-                disabled
-                type="text"
-                :placeholder="$t('computingPower.t4')"
-                style="font-size: 12px;"
-                v-model="tronObj.receiveAddress"
+                  disabled
+                  type="text"
+                  :placeholder="$t('computingPower.t4')"
+                  style="font-size: 12px;"
+                  v-model="tronObj.receiveAddress"
               />
               <span class="save" @click="copySubmit(tronObj.receiveAddress)">
                 {{ $t('computingPower.t18') }}
@@ -267,10 +267,10 @@
 
             <p>
               <input
-                type="text"
-                style="font-size: 12px;"
-                :placeholder="$t('computingPower.t20')"
-                v-model="hashSet"
+                  type="text"
+                  style="font-size: 12px;"
+                  :placeholder="$t('computingPower.t20')"
+                  v-model="hashSet"
               />
             </p>
           </div>
@@ -294,6 +294,7 @@
 import Web3 from 'web3'
 import abi from '@/web3/contract'
 import $ from 'jquery'
+
 const TronWeb = require('tronweb')
 let timeClean = null
 export default {
@@ -363,140 +364,142 @@ export default {
       }
     }, 15000)
   },
-  created() {},
-  destroyed() {},
+  created() {
+  },
+  destroyed() {
+  },
   methods: {
     topUser() {
       this.axios
-        .get(this.api.topUser, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.tronWallet = res.data.tronWallet
-          }
-        })
+          .get(this.api.topUser, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.tronWallet = res.data.tronWallet
+            }
+          })
     },
     powergetPage() {
       this.axios
-        .get(this.api.powergetPage, {
-          params: {
-            pageNum: 1,
-            pageSize: 10000,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.powergetPageList = res.data.records
-          }
-        })
+          .get(this.api.powergetPage, {
+            params: {
+              pageNum: 1,
+              pageSize: 10000,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.powergetPageList = res.data.records
+            }
+          })
     },
     claimAll() {
       var self = this
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.claimAll, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                this.orderInfo()
-                this.getUnclaimedList()
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.claimAll, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    this.orderInfo()
+                    this.getUnclaimedList()
 
-                $('.modal-body-success').html(this.$t('computingPower.t23'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(this.$t('computingPower.t24'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(this.$t('computingPower.t24'))
+                    $('.modal-body-success').html(this.$t('computingPower.t23'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(this.$t('computingPower.t24'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(this.$t('computingPower.t24'))
 
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     topPowerDailyIncomeclaim(id) {
       var self = this
 
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.axios
-            .post(self.api.topPowerDailyIncomeclaim + '?id=' + id, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              id,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                this.orderInfo()
-                this.getUnclaimedList()
-                $('.modal-body-success').html(this.$t('computingPower.t23'))
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.axios
+                .post(self.api.topPowerDailyIncomeclaim + '?id=' + id, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  id,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    this.orderInfo()
+                    this.getUnclaimedList()
+                    $('.modal-body-success').html(this.$t('computingPower.t23'))
 
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(this.$t('computingPower.t24'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(this.$t('computingPower.t24'))
 
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              $('.modal-body-erro').html(this.$t('computingPower.t24'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  $('.modal-body-erro').html(this.$t('computingPower.t24'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
     orderInfo() {
       this.axios
-        .get(this.api.orderInfo, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.orderInfoDetail = res.data
-          }
-        })
+          .get(this.api.orderInfo, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.orderInfoDetail = res.data
+            }
+          })
     },
     getUnclaimedList() {
       this.axios
-        .get(this.api.getUnclaimedList, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.claimedList = res.data
-          }
-        })
+          .get(this.api.getUnclaimedList, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.claimedList = res.data
+            }
+          })
     },
     powerConfig() {
       this.axios
-        .get(this.api.powerConfig, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.detail = res.data
-          }
-        })
+          .get(this.api.powerConfig, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.detail = res.data
+            }
+          })
     },
     // 获取次方
     async getDecimalsFn() {
@@ -589,71 +592,71 @@ export default {
       }
       var self = this
       this.axios
-        .get(this.api.queryTokensByChainId, {
-          params: {
-            walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
-            chainId: getChainId,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            if (this.tronObj.erc20Address) {
-              res.data.push({
-                chainId: -1,
-                symbol: 'TRON USDT',
-                icon: require('../../assets/new/32.png'),
-              })
-            }
+          .get(this.api.queryTokensByChainId, {
+            params: {
+              walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
+              chainId: getChainId,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              if (this.tronObj.erc20Address) {
+                res.data.push({
+                  chainId: -1,
+                  symbol: 'TRON USDT',
+                  icon: require('../../assets/new/32.png'),
+                })
+              }
 
-            this.chainList = res.data
-            this.obj = res.data[0]
-          }
-          this.getAccountsFn()
-        })
+              this.chainList = res.data
+              this.obj = res.data[0]
+            }
+            this.getAccountsFn()
+          })
     },
     async queryTokensByChainIdTron() {
       var self = this
       this.axios
-        .get(this.api.queryTokensByChainId, {
-          params: {
-            walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
-            chainId: -1,
-          },
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            if (res.data && res.data.length) {
-              const TronWeb = require('tronweb')
-              const tronWeb = new TronWeb({
-                fullHost: 'https://api.trongrid.io',
-              })
-              if (res.data[0].erc20Address) {
-                res.data[0].erc20Address = tronWeb.address.fromHex(
-                  res.data[0].erc20Address,
-                )
-              }
-              if (res.data[0].receiveAddress) {
-                res.data[0].receiveAddress = tronWeb.address.fromHex(
-                  res.data[0].receiveAddress,
-                )
-              }
+          .get(this.api.queryTokensByChainId, {
+            params: {
+              walletAddress: localStorage.getItem('tophis_walletAddress') || '-',
+              chainId: -1,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              if (res.data && res.data.length) {
+                const TronWeb = require('tronweb')
+                const tronWeb = new TronWeb({
+                  fullHost: 'https://api.trongrid.io',
+                })
+                if (res.data[0].erc20Address) {
+                  res.data[0].erc20Address = tronWeb.address.fromHex(
+                      res.data[0].erc20Address,
+                  )
+                }
+                if (res.data[0].receiveAddress) {
+                  res.data[0].receiveAddress = tronWeb.address.fromHex(
+                      res.data[0].receiveAddress,
+                  )
+                }
 
-              this.tronObj = res.data[0]
+                this.tronObj = res.data[0]
+              }
             }
-          }
-          this.queryTokensByChainId()
-        })
+            this.queryTokensByChainId()
+          })
     },
     tokengetList() {
       this.axios
-        .get(this.api.tokengetList, {
-          params: {},
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.list = res.data
-          }
-        })
+          .get(this.api.tokengetList, {
+            params: {},
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.list = res.data
+            }
+          })
     },
     async rechargeFn(hash, type) {
       var self = this
@@ -684,53 +687,53 @@ export default {
       }
       try {
         self.axios
-          .post(self.api.recharge, {
-            hash,
-            chainId: getChainId,
-            tokenSymbol,
-          })
-          .then((res) => {
-            // self.getAccountsFn()
-            if (res.code == 200) {
-              if (type == 1) {
-                self.removeHashArrFn(self.hash2)
-                $('.modal-body-success').html(self.$t('computingPower.t25'))
-                $('.clickDialogIconedSuccess').click()
+            .post(self.api.recharge, {
+              hash,
+              chainId: getChainId,
+              tokenSymbol,
+            })
+            .then((res) => {
+              // self.getAccountsFn()
+              if (res.code == 200) {
+                if (type == 1) {
+                  self.removeHashArrFn(self.hash2)
+                  $('.modal-body-success').html(self.$t('computingPower.t25'))
+                  $('.clickDialogIconedSuccess').click()
+                }
+
+                self.symbol = ''
+                self.hash = ''
+                self.hash2 = ''
+                self.number = ''
+
+                self.getAccountsFn()
+              } else {
+                if (type == 1) {
+                  $('.modal-body-erro').html(self.$t('computingPower.t26'))
+                  $('.clickDialogIconedDanger').click()
+                } else {
+                  self.setHashArrFn(hash, tokenSymbol)
+                  setTimeout(() => {
+                    self.apiFn()
+                  }, 10000)
+                }
+
+                self.getAccountsFn()
               }
-
-              self.symbol = ''
-              self.hash = ''
-              self.hash2 = ''
-              self.number = ''
-
-              self.getAccountsFn()
-            } else {
+            })
+            .catch((e) => {
               if (type == 1) {
                 $('.modal-body-erro').html(self.$t('computingPower.t26'))
                 $('.clickDialogIconedDanger').click()
               } else {
-                self.setHashArrFn(hash, tokenSymbol)
                 setTimeout(() => {
                   self.apiFn()
                 }, 10000)
+                self.setHashArrFn(hash, tokenSymbol)
               }
 
               self.getAccountsFn()
-            }
-          })
-          .catch((e) => {
-            if (type == 1) {
-              $('.modal-body-erro').html(self.$t('computingPower.t26'))
-              $('.clickDialogIconedDanger').click()
-            } else {
-              setTimeout(() => {
-                self.apiFn()
-              }, 10000)
-              self.setHashArrFn(hash, tokenSymbol)
-            }
-
-            self.getAccountsFn()
-          })
+            })
       } catch (error) {
         if (type == 1) {
           $('.modal-body-erro').html(self.$t('computingPower.t26'))
@@ -808,21 +811,21 @@ export default {
       var self = this
 
       self.axios
-        .post(self.api.recharge, {
-          hash,
-          chainId: getChainId,
-          tokenSymbol,
-        })
-        .then((res) => {
-          if (res.code == 200) {
-            this.removeHashArrFn(hash)
-            if (type == 1) {
-              self.hash2=''
-              $('.modal-body-success').html(self.$t('computingPower.t25'))
-              $('.clickDialogIconedSuccess').click()
+          .post(self.api.recharge, {
+            hash,
+            chainId: getChainId,
+            tokenSymbol,
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.removeHashArrFn(hash)
+              if (type == 1) {
+                self.hash2 = ''
+                $('.modal-body-success').html(self.$t('computingPower.t25'))
+                $('.clickDialogIconedSuccess').click()
+              }
             }
-          }
-        })
+          })
     },
     // 初始化 usdt
     usdtAbiInitFn() {
@@ -881,44 +884,44 @@ export default {
       // this.loading = true
       this.loading = true
       usdtAbiInitFn.methods
-        .transfer(
-          self.receiveAddress,
-          self.scientificToNumber(
-            self.number * Math.pow(10, await self.getDecimalsFn()),
-          ),
-        )
-        .send({
-          from: fromAddress[0],
-          // gasLimit: 2100000,
-          gasPrice: self.gasPrice,
-        })
-
-        .on('transactionHash', function (hash) {
-          console.log(hash, '-----------hash')
-          $('.modal-body-success').html(self.$t('computingPower.t25'))
-          $('.clickDialogIconedSuccess').click()
-          self.rechargeFn(hash)
-          self.loading = false
-        })
-        .on('receipt', function (receipt) {
-          console.log(receipt, '-----------receipt')
-        })
-        .on('confirmation', function (confirmationNumber, receipt) {
-          console.log(confirmationNumber, receipt, '-----------confirmation')
-
-          if (confirmationNumber == 0) {
-          }
-        })
-        .on('error', function (error, receipt) {
-          console.log(error, receipt, '-----------error')
-
-          self.loading = false
-
-          self.$message({
-            type: 'info',
-            message: error.message || error.stack,
+          .transfer(
+              self.receiveAddress,
+              self.scientificToNumber(
+                  self.number * Math.pow(10, await self.getDecimalsFn()),
+              ),
+          )
+          .send({
+            from: fromAddress[0],
+            // gasLimit: 2100000,
+            gasPrice: self.gasPrice,
           })
-        })
+
+          .on('transactionHash', function (hash) {
+            console.log(hash, '-----------hash')
+            $('.modal-body-success').html(self.$t('computingPower.t25'))
+            $('.clickDialogIconedSuccess').click()
+            self.rechargeFn(hash)
+            self.loading = false
+          })
+          .on('receipt', function (receipt) {
+            console.log(receipt, '-----------receipt')
+          })
+          .on('confirmation', function (confirmationNumber, receipt) {
+            console.log(confirmationNumber, receipt, '-----------confirmation')
+
+            if (confirmationNumber == 0) {
+            }
+          })
+          .on('error', function (error, receipt) {
+            console.log(error, receipt, '-----------error')
+
+            self.loading = false
+
+            self.$message({
+              type: 'info',
+              message: error.message || error.stack,
+            })
+          })
     },
 
     buyOrder() {
@@ -937,42 +940,42 @@ export default {
       self.loading = true
 
       window.ethereum
-        .request({
-          method: 'personal_sign',
-          params: [
-            self.objConfig.web3jSign,
-            localStorage.getItem('tophis_walletAddress'),
-          ],
-        })
-        .then((signature) => {
-          self.loading = false
+          .request({
+            method: 'personal_sign',
+            params: [
+              self.objConfig.web3jSign,
+              localStorage.getItem('tophis_walletAddress'),
+            ],
+          })
+          .then((signature) => {
+            self.loading = false
 
-          self.axios
-            .post(self.api.buyOrder, {
-              wallet: localStorage.getItem('tophis_walletAddress') || '-',
-              signMsg: signature,
-              content: self.objConfig.web3jSign,
-              number: self.number2,
-              symbol: self.symbol2,
-            })
-            .then((res) => {
-              if (res.code == 200) {
-                self.number2 = ''
+            self.axios
+                .post(self.api.buyOrder, {
+                  wallet: localStorage.getItem('tophis_walletAddress') || '-',
+                  signMsg: signature,
+                  content: self.objConfig.web3jSign,
+                  number: self.number2,
+                  symbol: self.symbol2,
+                })
+                .then((res) => {
+                  if (res.code == 200) {
+                    self.number2 = ''
 
-                $('.modal-body-success').html(this.$t('BDCF.t12'))
-                $('.clickDialogIconedSuccess').click()
-              } else {
-                $('.modal-body-erro').html(res.msg || this.$t('BDCF.t13'))
-                $('.clickDialogIconedDanger').click()
-              }
-            })
-            .catch((e) => {
-              self.loading = false
+                    $('.modal-body-success').html(this.$t('BDCF.t12'))
+                    $('.clickDialogIconedSuccess').click()
+                  } else {
+                    $('.modal-body-erro').html(res.msg || this.$t('BDCF.t13'))
+                    $('.clickDialogIconedDanger').click()
+                  }
+                })
+                .catch((e) => {
+                  self.loading = false
 
-              $('.modal-body-erro').html(e.msg || this.$t('BDCF.t13'))
-              $('.clickDialogIconedDanger').click()
-            })
-        })
+                  $('.modal-body-erro').html(e.msg || this.$t('BDCF.t13'))
+                  $('.clickDialogIconedDanger').click()
+                })
+          })
     },
   },
 }
@@ -982,15 +985,18 @@ export default {
 .computingPower {
   .bg1 {
     margin-top: -30px;
+
     .gif1 {
       width: 100%;
       position: absolute;
       opacity: 0.5;
     }
+
     .titleIcon {
       text-align: center;
       position: relative;
       z-index: 10;
+
       img {
         width: 200px;
         margin: 60px auto 0;
@@ -1010,6 +1016,7 @@ export default {
       .t2 {
         display: flex;
         margin-bottom: 16px;
+
         .t3 {
           width: 120px;
           height: 44px;
@@ -1021,6 +1028,7 @@ export default {
           justify-content: space-between;
           align-items: center;
           margin-right: 8px;
+
           > div {
             display: flex;
             align-items: center;
@@ -1031,10 +1039,12 @@ export default {
             border-radius: 50%;
             margin-right: 6px;
           }
+
           .icon2 {
             height: 15px;
           }
         }
+
         .ipt {
           font-size: 15px;
           display: flex;
@@ -1045,6 +1055,7 @@ export default {
           border: 1px solid rgba(122, 191, 255, 0.6);
           padding-left: 12px;
           justify-content: space-between;
+
           .save {
             min-width: 71px;
             padding: 0 5px;
@@ -1058,6 +1069,7 @@ export default {
             background: linear-gradient(90deg, #0dffff 0%, #2ae1ff 100%);
             border-radius: 12px 12px 12px 12px;
           }
+
           input[placeholder],
           [placeholder],
           *[placeholder] {
@@ -1065,25 +1077,30 @@ export default {
             width: 130px;
           }
         }
+
         .activeBg {
           border: 1px solid #0283fa;
           background: #121315;
         }
       }
     }
+
     .t4 {
       background: rgba(36, 38, 39, 0.7);
       border-radius: 12px 12px 12px 12px;
       padding-bottom: 12px;
       border: 1px solid rgba(122, 191, 255, 0.66);
+
       .gitIcon {
         margin: 100px auto 0;
         text-align: center;
         padding-left: 63px;
+
         img {
           width: 300px;
         }
       }
+
       .t5 {
         position: relative;
 
@@ -1093,8 +1110,10 @@ export default {
           color: #ffb600;
           margin-top: 6px;
         }
+
         .income {
           text-align: center;
+
           p {
             font-weight: 400;
             font-size: 12px;
@@ -1105,6 +1124,7 @@ export default {
             word-wrap: break-word;
           }
         }
+
         > div {
           text-align: center;
           width: 80px;
@@ -1120,6 +1140,7 @@ export default {
               align-items: center;
               justify-content: center;
               margin: 0 auto 6px;
+
               p {
                 font-weight: 400;
                 font-size: 12px;
@@ -1131,6 +1152,7 @@ export default {
             }
           }
         }
+
         .claimAll {
           width: 60px;
           color: #333;
@@ -1143,47 +1165,58 @@ export default {
           background: url(../../assets/new/34.png) no-repeat;
           background-size: 100% 100%;
         }
+
         > div:nth-child(1) {
           position: absolute;
           left: 0px;
           top: 170px;
         }
+
         > div:nth-child(2) {
           position: absolute;
           left: 50px;
           top: 60px;
         }
+
         > div:nth-child(3) {
           position: absolute;
           left: 140px;
           top: 20px;
         }
+
         > div:nth-child(4) {
           position: absolute;
           right: 43px;
           top: 20px;
         }
+
         > div:nth-child(5) {
           position: absolute;
           right: 13px;
           top: 140px;
         }
       }
+
       .example0 {
         animation: example0 2s infinite linear;
       }
+
       .example1 {
         animation: example 2s infinite linear;
       }
+
       .example2 {
         animation: example0 3s infinite linear;
       }
+
       .example3 {
         animation: example 3s infinite linear;
       }
+
       .example4 {
         animation: example0 3s infinite linear;
       }
+
       @keyframes example {
         0% {
           transform: translateY(0);
@@ -1221,17 +1254,21 @@ export default {
 
       .t6 {
         padding: 12px;
+
         .t7 {
           display: flex;
+
           > div {
             width: 50%;
           }
+
           > div:nth-child(1) {
             > div:nth-child(1) {
               font-weight: 400;
               font-size: 14px;
               color: rgba(255, 255, 255, 0.6);
             }
+
             > div:nth-child(2) {
               font-weight: bold;
               font-size: 20px;
@@ -1239,12 +1276,14 @@ export default {
               margin-top: 12px;
             }
           }
+
           > div:nth-child(2) {
             > div:nth-child(1) {
               font-weight: 400;
               font-size: 14px;
               color: rgba(255, 255, 255, 0.6);
             }
+
             > div:nth-child(2) {
               font-weight: bold;
               font-size: 20px;
@@ -1253,19 +1292,23 @@ export default {
             }
           }
         }
+
         .t8 {
           position: relative;
+
           > div:nth-child(1) {
             font-weight: 400;
             font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
           }
+
           > div:nth-child(2) {
             font-weight: bold;
             font-size: 20px;
             color: #00b42a;
             margin-top: 12px;
           }
+
           .save {
             width: 108px;
             height: 44px;
@@ -1284,16 +1327,19 @@ export default {
         }
       }
     }
+
     .t9 {
       font-weight: 500;
       font-size: 16px;
       color: #ffffff;
       margin: 34px 0 24px;
       position: relative;
+
       p {
         position: relative;
         z-index: 1;
       }
+
       img {
         width: 62px;
         position: absolute;
@@ -1302,42 +1348,52 @@ export default {
         z-index: 0;
       }
     }
+
     .list {
       background: rgba(36, 38, 39, 0.7);
       border-radius: 12px 12px 12px 12px;
       border: 1px solid rgba(122, 191, 255, 0.66);
       padding: 0 12px;
+
       .t11 {
         display: flex;
         padding: 15px 0;
         justify-content: space-between;
+
         p {
           font-weight: 400;
           font-size: 14px;
           word-wrap: break-word;
           color: #999999;
         }
+
         > p:nth-child(1) {
           width: 30%;
         }
+
         > p:nth-child(2) {
           width: 28%;
           text-align: center;
         }
+
         > p:nth-child(3) {
           width: 20%;
           text-align: center;
         }
+
         > p:nth-child(4) {
           width: 25%;
           text-align: right;
         }
       }
+
       .t12 {
         border-top: 1px solid #535860;
+
         p {
           color: #fff;
         }
+
         .num {
           color: #02ff3e;
         }
@@ -1345,10 +1401,12 @@ export default {
     }
   }
 }
+
 .list2 {
   padding: 0 16px;
   max-height: 300px;
   overflow-y: scroll;
+
   > div {
     background: rgba(0, 198, 255, 0.1);
     border-radius: 8px;
@@ -1359,6 +1417,7 @@ export default {
     display: flex;
     display: flex;
     align-items: center;
+
     img {
       width: 26px;
       margin-right: 10px;
@@ -1366,14 +1425,17 @@ export default {
     }
   }
 }
+
 .price {
   font-size: 16px;
   color: #fff;
   margin-bottom: 10px;
 }
+
 .iptList {
   margin-bottom: 20px !important;
   margin-top: 10px !important;
+
   > p {
     border-radius: 6px;
     height: 40px;
@@ -1381,12 +1443,14 @@ export default {
     margin-bottom: 10px;
     border: 1px solid rgba(0, 198, 255, 0.3);
     background: rgba(0, 198, 255, 0.1);
+
     input {
       height: 40px;
       width: 100%;
       padding-left: 10px;
       font-size: 14px;
     }
+
     .save {
       width: 56px;
       height: 40px;
@@ -1405,6 +1469,7 @@ export default {
     }
   }
 }
+
 .alts {
   text-align: left;
   line-height: 2.6;

@@ -76,8 +76,8 @@
           <p>{{ $t('manageMoneyMatters.t7') }}</p>
           <p>{{ $t('manageMoneyMatters.t8') }}</p>
           <p>{{ $t('manageMoneyMatters.t9') }}</p>
-          <p>{{ $t('manageMoneyMatters.t10') }}</p>
           <p>{{ $t('manageMoneyMatters.t21') }}</p>
+          <p>{{ $t('manageMoneyMatters.t10') }}</p>
         </div>
         <div
             class="t11 t12"
@@ -87,6 +87,8 @@
           <p>{{ item.symbol }}</p>
           <p>{{ item.amount }}</p>
           <p>{{ item.orderDate }}</p>
+          <p> {{ item.releaseDate }}</p>
+
           <p class="num" v-if="item.status != 2">
             {{
               item.status == 1
@@ -102,7 +104,6 @@
               {{ $t('manageMoneyMatters.t13') }}
             </span>
           </p>
-          <p> {{ item.releaseDate }}</p>
         </div>
       </div>
       <div class="mt-2" v-if="!topStoreOrdergetPageList.length">
@@ -613,25 +614,30 @@ export default {
           font-weight: 400;
           font-size: 14px;
           color: #999999;
-          width: 20%;
+          width: 10%;
         }
 
         > p:nth-child(1) {
-          width: 15%;
+          width: 10%;
         }
 
         > p:nth-child(2) {
           text-align: center;
-          width: 30%;
+          width: 16%;
         }
 
         > p:nth-child(3) {
           text-align: center;
-          width: 30%;
+          width: 23%;
         }
 
         > p:nth-child(4) {
+          text-align: center;
+          width: 23%;
+        }
+        > p:nth-child(5) {
           text-align: right;
+          width: fit-content;
         }
       }
 

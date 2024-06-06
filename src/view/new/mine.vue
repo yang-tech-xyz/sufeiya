@@ -86,9 +86,18 @@
         <div
             data-bs-toggle="modal"
             data-bs-target="#DialogBasic2"
+            @click="transferSymbol='USDT'"
             class="usdSave"
         >
           USDT {{ $t('mine.t5') }}
+        </div>
+        <div
+            data-bs-toggle="modal"
+            data-bs-target="#DialogBasic2"
+            @click="transferSymbol='BTCF'"
+            class="usdSave"
+        >
+          BTCF {{ $t('mine.t5') }}
         </div>
       </div>
       <div>
@@ -580,6 +589,7 @@ export default {
       getPageList: [],
       powergetPageList: [],
       receiveAddress: '',
+      transferSymbol:"USDT",
       btcTransferAddress: '',
       btcTransferAddress2: '',
       tronUsdtaddress: '',
@@ -1029,6 +1039,8 @@ export default {
     },
     //ETH转账
     async getTransfer() {
+      let symbol = this.transferSymbol
+      console.log("交易",symbol)
       var self = this
       if (!this.receiveAddress) {
         $('.modal-body-erro').html(this.$t('mine.t51'))
@@ -1056,7 +1068,7 @@ export default {
                   content: self.objConfig.web3jSign,
                   amount: self.amount,
                   receiveAddress: self.receiveAddress,
-                  symbol: 'USDT',
+                  symbol: symbol,
                 })
                 .then((res) => {
                   if (res.code == 200) {
@@ -1321,7 +1333,7 @@ export default {
     margin: 40px 0;
 
     > div {
-      width: 164px;
+      width: 130px;
       height: 44px;
       border: 1px solid rgba(13, 110, 253, 1);
       border-radius: 12px;
