@@ -10,7 +10,7 @@
     <div class="com">
       <div class="t1">
         <div class="price" v-if="symbol && symbol != 'TRON USDT'">
-          {{ symbol }}：{{ Balance || 0 }}
+          {{ symbol }} {{ $t("mine.t72") }}：{{ Balance || 0 }}
           <!-- {{ availableBalance || 0 }} -->
         </div>
 
@@ -42,6 +42,9 @@
               {{ $t('computingPower.t3') }}
             </p>
           </div>
+        </div>
+        <div class="price" v-if="symbol2">
+          {{ symbol2 }} {{ $t("mine.t73") }}：{{ symbol2Account }} ≈ {{symbol2MinterAmount}}T
         </div>
         <div class="t2">
           <div
@@ -311,6 +314,8 @@ export default {
       objConfig: _GlobalConfig[_GlobalConfig.currentEnv],
       symbol: '',
       symbol2: '',
+      symbol2Account: 0.00,
+      symbol2MinterAmount:0,
       decimals: '',
       number: '',
       number2: '',
@@ -529,8 +534,35 @@ export default {
         this.symbol2 = item.symbol
         this.receiveAddress = item.receiveAddress
         this.icon2 = item.icon
+
+        this.initsymbol2()
       }
       this.drawer = false
+    },
+    initsymbol2(){
+      this.axios
+          .get(this.api.getAccounts, {
+            params: {
+              symbol: this.symbol2,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.symbol2Account = Number(res.data[0].availableBalance || 0 ).toFixed(2)
+            }
+          })
+
+      this.axios
+          .get(this.api.getEvaluateBuyMinterAmount, {
+            params: {
+              symbol: this.symbol2,
+            },
+          })
+          .then((res) => {
+            if (res.code == 200) {
+              this.symbol2MinterAmount = Number(res.data).toFixed(0)
+            }
+          })
     },
     // 获取代币金额  暂时没用到
     async getBalanceOfFn() {
@@ -968,6 +1000,7 @@ export default {
                     $('.modal-body-erro').html(res.msg || this.$t('BDCF.t13'))
                     $('.clickDialogIconedDanger').click()
                   }
+                  this.initsymbol2()
                 })
                 .catch((e) => {
                   self.loading = false

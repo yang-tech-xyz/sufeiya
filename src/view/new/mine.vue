@@ -101,7 +101,7 @@
         </div>
       </div>
       <div>
-        <div>BTC{{ $t('mine.t6') }}</div>
+        <div>{{ $t('mine.t6') }}</div>
         <div
             class="ipt"
             @touchstart.stop="
@@ -134,7 +134,7 @@
       </div>
 
       <div style="margin-top: 30px;">
-        <div>TRON USDT{{ $t('mine.t6') }}</div>
+        <div>TRON USDT{{ $t('mine.t71') }}</div>
         <div
             class="ipt"
             @touchstart.stop="

@@ -8,6 +8,7 @@ export default {
   buyOrder: '/power/buyOrder',
   recharge: '/token/recharge',
   getAccounts: '/topAccount/getAccounts',
+  getEvaluateBuyMinterAmount:'/power/evaluateBuyMinterAmount',
   getList: '/topStore/getList',
   topStoreOrderorder: '/topStoreOrder/order',
   tokenclaim: '/token/withdraw',

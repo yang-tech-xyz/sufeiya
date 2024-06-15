@@ -107,8 +107,8 @@ const zh_CN = {
     t3: 'Withdraw',
     t4: 'BTC to USDT',
     t5: 'Transfer',
-    t6: 'Withdrawal address',
-    t7: 'BTC withdrawal address',
+    t6: 'Bitcoin Network (BTC) withdrawal address',
+    t7: 'Enter the withdrawal address for the BTC chain wallet',
     t8: 'Save',
     t9: 'Copy',
     t10: 'TRON USDT withdrawal address',
@@ -170,6 +170,13 @@ const zh_CN = {
     t68:`Total number of teams`,
     t69:`units`,
     t70:'Total Team Staking Amount',
+    t71:'Withdrawal address',
+    t72:'Wallet balance',
+    t73:'System balance',
+    t75:'platform',
+    t76:'Destruction quantity',
+    t77:'Destroy query address',
+
   },
 }
 

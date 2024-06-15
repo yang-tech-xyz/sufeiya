@@ -54,6 +54,28 @@
         </p>
         <div class="save" @click="exchangeUsdt2BTCF">{{$t('BDCF.t4') }}</div>
       </div>
+
+      <div class="t2">
+        <p class="t9">BTCF {{$t('mine.t76') }}：<span style="color:rgb(235 122 122 / 78%)">{{ getBurning }}</span></p>
+        <p class="t9" style="margin-top:20px;display: flex;align-items: center">{{$t('mine.t77') }}：
+<!--          <el-tag-->
+<!--              type="success"-->
+<!--              size="mini"-->
+<!--              @click="copySubmit('0x000000000000000000000000000000000000dEaD')"-->
+<!--              effect="dark">-->
+<!--            {{ $t('computingPower.t18')}}-->
+<!--          </el-tag>-->
+
+            <span style="color:rgb(235 122 122 / 78%);font-size: 14px">0x0(30)00000dEaD</span>
+            <img
+                style="width: 20px;height: 20px;margin-left: 10px;margin-bottom: 3px;"
+                @click="copySubmit(shareUrl)"
+                src="../../assets/new/5.png"
+                alt=""
+            />
+        </p>
+      </div>
+
       <div class="t11">
         <p>{{$t('BDCF.t6') }}</p>
         <img src="../../assets/new/25.png" alt="" />
@@ -65,7 +87,7 @@
         <p>{{$t('BDCF.t9') }}</p>
         <p>{{$t('BDCF.t10') }}</p>
 
-        
+
       </div>
     </div>
     <div class="navigationBar">
@@ -135,13 +157,22 @@ export default {
       amount: '',
       objConfig: _GlobalConfig[_GlobalConfig.currentEnv],
       btcDetail: {},
+      getBurning:0,
     }
   },
   components: {},
   mounted() {
+    this.initBTCF();
     this.tokengetList()
   },
   methods: {
+    initBTCF(){
+      this.axios
+          .get('topTokenBurning/getBurning')
+          .then((res) => {
+            this.getBurning = res.data.burningAmount;
+          })
+    },
     exchangeUsdt2BTCF() {
       var self = this
       if (!this.amount) {
