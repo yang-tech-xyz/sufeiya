@@ -56,7 +56,7 @@
       </div>
 
       <div class="t2">
-        <p class="t9">BTCF {{$t('mine.t76') }}：<span style="color:rgb(235 122 122 / 78%)">{{ getBurning }}</span></p>
+        <p class="t9">BTCF {{$t('mine.t76') }}：<span style="color:#03C4FB">{{ getBurning }}</span></p>
         <p class="t9" style="margin-top:20px;display: flex;align-items: center">{{$t('mine.t77') }}：
 <!--          <el-tag-->
 <!--              type="success"-->
@@ -66,10 +66,10 @@
 <!--            {{ $t('computingPower.t18')}}-->
 <!--          </el-tag>-->
 
-            <span style="color:rgb(235 122 122 / 78%);font-size: 14px">0x0(30)00000dEaD</span>
+            <span style="color:#03C4FB;font-size: 14px">0x0(30)00000dEaD</span>
             <img
                 style="width: 20px;height: 20px;margin-left: 10px;margin-bottom: 3px;"
-                @click="copySubmit(shareUrl)"
+                @click="copySubmit('0x000000000000000000000000000000000000dEaD')"
                 src="../../assets/new/5.png"
                 alt=""
             />

@@ -144,14 +144,14 @@
           <p>{{ $t('computingPower.t11') }}</p>
           <p>{{ $t('computingPower.t12') }}</p>
           <p>{{ $t('computingPower.t13') }}</p>
-          <p>{{ $t('computingPower.t14') }}</p>
+          <p>{{ $t('computingPower.t14') }}(T)</p>
         </div>
         <div class="t11 t12" v-for="(item, idx) in powergetPageList" :key="idx">
           <p>{{ item.orderNo }}</p>
           <p>{{ item.orderDate }}</p>
           <p>{{ item.number }}{{ $t('computingPower.t15') }}</p>
           <p class="num" v-if="item.income">
-            {{ (item.income * 1 || 0).toFixed(2) }}{{ item.outputSymbol }}
+            {{ (item.income * 1 || 0).toFixed(2) }}
           </p>
         </div>
       </div>
@@ -581,11 +581,10 @@ export default {
       var accounts = await web3.eth.getAccounts()
       var usdtAbiInitFn = await self.usdtAbiInitFn()
       let Balance = await usdtAbiInitFn.methods.balanceOf(accounts[0]).call({})
-      let Balance2 = web3.utils.fromWei(Balance, 'ether')
-      if (Balance2) {
-        this.Balance = (Balance2 * 1).toFixed(2)
-        console.log(this.Balance, '余额')
-      }
+      let decimals = await usdtAbiInitFn.methods.decimals().call({}) || 2
+      console.log(Balance,decimals,Math.pow(10 ,decimals), '余额')
+      this.Balance = (Balance /  Math.pow(10 ,decimals) ).toFixed(decimals)
+      console.log(Balance,decimals, '余额')
 
       // let web3 = new Web3(Web3.givenProvider)
 
@@ -862,6 +861,7 @@ export default {
     // 初始化 usdt
     usdtAbiInitFn() {
       let web3 = new Web3(Web3.givenProvider)
+      console.log(this.erc20Address)
       return new web3.eth.Contract(abi.usdtAbi, this.erc20Address)
     },
     async getGasPriceFn() {

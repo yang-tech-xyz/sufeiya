@@ -20,20 +20,20 @@ const zh_CN = {
     confirmBinding: 'Confirm',
   },
   BDCF: {
-    t1: 'BTCF Bitcoin Mining Pool L2 Public Chain',
-    t2: 'Allow miners to join the Bitcoin mining ecosystem more flexibly',
+    t1: 'BTCF Everything Protocol Ecology',
+    t2: 'Flexibly incorporating the BTCF ecosystem into Bitcoin\'s computing power',
     t3: 'Era Dividend',
     t4: 'Exchange',
     t5: 'Quantity',
     t6: 'Introduction to BTCF',
     t7:
-      'BTCF unites global mainstream mining farms and brings together massive mining pools to jointly create a more distributed and decentralized Bitcoin mining ecosystem to maintain the stability and prosperity of Bitcoin. ',
+      'BTCF is a cutting-edge digital asset that provides unlimited possibilities for users with its unique protocol for connecting everything. Whether it\'s luxury homes, luxury cars, or luxury watches and bags, BTCF can serve as a universal medium of exchange, achieving efficient transactions between people and things. BTCF is not just a digital asset, it is also a wealth tool that can continuously appreciate, bringing lasting returns and investment returns to users. ',
     t8:
-      'Since the launch of the BTC20 protocol, the Bitcoin ecosystem has experienced unprecedented prosperity, and inscriptions, runes, and protons have bloomed, helping the Bitcoin bull market come. ',
+      'Through BTCF, users can not only participate in various commodity transactions, but also exchange BTC computing power, further increasing their digital asset reserves. BTCF demonstrates excellent liquidity and security during the trading process, allowing users to confidently engage in high-value transactions and experience efficient and convenient digital financial services. ',
     t9:
-      "At the same time, Bitcoin's mining threshold is getting higher and higher, and mining pools are becoming more and more centralized, deviating from its original intention of decentralization and threatening the security of Bitcoin. ",
+      "BTCF is committed to technological innovation and is committed to building a sustainable digital economy ecosystem for its users. It integrates advanced blockchain technology and rich application scenarios, not only improving the efficiency of traditional transaction methods, but also bringing rich potential benefits to users. Choosing BTCF is choosing a brand new way of life, a future that continuously increases wealth. ",
     t10:
-      'BTCF Bitcoin second-layer decentralized mining pool public chain was jointly launched by Bitcoin enthusiasts and global mining pools. Let more miners easily participate in Bitcoin node construction! ',
+      '',
     t11: 'Select currency',
     t12: 'Redeem successful',
     t13: 'Exchange failed',
