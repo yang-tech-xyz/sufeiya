@@ -390,6 +390,7 @@ export default {
         font-size: 14px;
         color: #ffffff;
         line-height: 22px;
+        margin: 5px 0;
       }
     }
   }

@@ -151,7 +151,7 @@
           <p>{{ item.orderDate }}</p>
           <p>{{ item.number }}{{ $t('computingPower.t15') }}</p>
           <p class="num" v-if="item.income">
-            {{ (item.income * 1 || 0).toFixed(2) }}
+            {{ (item.income * 1 || 0).toFixed(6) }}
           </p>
         </div>
       </div>

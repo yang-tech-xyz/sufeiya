@@ -10,6 +10,13 @@ import i18n from '@/i18n/i18n'
 import Es6Promise from 'es6-promise'
 import './const/bridge'
 import 'babel-polyfill'
+// import VConsole from 'vconsole';
+// if(_GlobalConfig.currentEnv=='pro'){
+//
+//   const vConsole = new VConsole();
+//
+// }
+//
 
 import { goTo, goRep, goBack, goResolve } from '@/const/common.js'
 import {

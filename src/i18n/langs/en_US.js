@@ -21,8 +21,8 @@ const zh_CN = {
   },
   BDCF: {
     t1: 'BTCF Everything Protocol Ecology',
-    t2: 'Flexibly incorporating the BTCF ecosystem into Bitcoin\'s computing power',
-    t3: 'Era Dividend',
+    t2: 'Flexibly incorporating the BTCF ecosystem into Bitcoin\'s computing power.',
+    t3: 'Enjoy the dividends of the times',
     t4: 'Exchange',
     t5: 'Quantity',
     t6: 'Introduction to BTCF',
