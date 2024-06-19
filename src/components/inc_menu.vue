@@ -219,6 +219,7 @@
 </template>
 <script>
 import $ from 'jquery'
+import Web3 from "web3";
 const TronWeb = require('tronweb')
 export default {
   data() {
@@ -268,9 +269,11 @@ export default {
           }
         }
       }, 500)
+
     } else {
       self.bindwallet()
     }
+    this.bindChanId()
     // if(window.tp){
     //   try{
     //     window.tp.on('accountChanged', (newAccount) => {
@@ -409,6 +412,23 @@ export default {
         self.gasPrice = e
       })
     },
+    // 取网络id，一直取到拿到为止
+    async bindChanId(){
+      console.log("bindChanId")
+      let chainId = null;
+      try{
+        let web3 = new Web3(Web3.givenProvider)
+        chainId = await web3.eth.getChainId()
+        localStorage.setItem(
+            'tophis_chainId',
+            chainId,
+        )
+      }catch (e){ console.error("e7",e)}
+      console.log("chainId",chainId)
+      if(!chainId){
+        setTimeout(this.bindChanId,500)
+      }
+    },
     async bindwallet(type) {
       var self = this
       if (window.ethereum) {
@@ -453,11 +473,11 @@ export default {
                 })
                 .catch((e) => {})
             })
-
             .catch(function (reason) {})
         } catch (error) {
           $('.DialogBasic2').click()
         }
+        await this.bindChanId();
       } else {
         // setTimeout(() => {
         //   if (window.tronWeb) {

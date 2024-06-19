@@ -309,7 +309,6 @@ export default {
       drawer: false,
       chainList: [],
       list: [],
-      loading: false,
       loadingText: '交易处理中...',
       objConfig: _GlobalConfig[_GlobalConfig.currentEnv],
       symbol: '',
@@ -358,10 +357,10 @@ export default {
       this.apiFn()
     }
     let i = 0
-    timeClean = setInterval(() => {
+    timeClean = setInterval(async () => {
       i++
       if (localStorage.getItem('hashArr')) {
-        this.apiFn()
+        await this.apiFn()
       }
 
       if (i >= 20) {
@@ -616,11 +615,16 @@ export default {
       //   })
     },
     async queryTokensByChainId() {
-      var getChainId = -1
-      if (Web3.givenProvider) {
-        let web3 = new Web3(Web3.givenProvider)
-        getChainId = await web3.eth.getChainId()
+      var getChainId = localStorage.getItem('tophis_chainId') || -1
+      try{
+        if (Web3.givenProvider) {
+          let web3 = new Web3(Web3.givenProvider)
+          getChainId = await web3.eth.getChainId()
+        }
+      }catch (e5){
+        console.error("queryTokensByChainId e5",e5)
       }
+
       var self = this
       this.axios
           .get(this.api.queryTokensByChainId, {
@@ -691,30 +695,36 @@ export default {
     },
     async rechargeFn(hash, type) {
       var self = this
-      var getChainId = -1
-      if (Web3.givenProvider && hash && self.symbol != 'TRON USDT') {
-        let web3 = new Web3(Web3.givenProvider)
-        getChainId = await web3.eth.getChainId()
-      }
+      var getChainId = localStorage.getItem('tophis_chainId') || -1
+      try{
+        if (Web3.givenProvider && hash && self.symbol != 'TRON USDT') {
+          let web3 = new Web3(Web3.givenProvider)
+          getChainId = await web3.eth.getChainId()
+        }
+      }catch (e){console.error("protect",e)}
       var tokenSymbol = self.symbol == 'TRON USDT' ? 'USDT' : this.symbol
       var hash = self.symbol == 'TRON USDT' ? self.hashSet : hash
-      if (type == 1) {
-        tokenSymbol = ''
-        if (localStorage.getItem('hashArr')) {
-          let hashArr = JSON.parse(localStorage.getItem('hashArr'))
-          hashArr.forEach((e) => {
-            if (e.hash == hash) {
-              tokenSymbol = e.tokenSymbol
-              getChainId = e.getChainId
-            }
-          })
+      try{
+        if (type == 1) {
+          tokenSymbol = ''
+          if (localStorage.getItem('hashArr')) {
+            let hashArr = JSON.parse(localStorage.getItem('hashArr'))
+            hashArr.forEach((e) => {
+              if (e.hash == hash) {
+                tokenSymbol = e.tokenSymbol
+                getChainId = e.getChainId
+              }
+            })
+          }
+          if (!tokenSymbol) {
+            // $('.modal-body-erro').html(self.$t('tab.t4'))
+            // $('.clickDialogIconedDanger').click()
+            this.forAllFn(hash)
+            return
+          }
         }
-        if (!tokenSymbol) {
-          // $('.modal-body-erro').html(self.$t('tab.t4'))
-          // $('.clickDialogIconedDanger').click()
-          this.forAllFn(hash)
-          return
-        }
+      }catch (e2){
+        console.error("protect e2",e2)
       }
       try {
         self.axios
@@ -744,8 +754,8 @@ export default {
                   $('.clickDialogIconedDanger').click()
                 } else {
                   self.setHashArrFn(hash, tokenSymbol)
-                  setTimeout(() => {
-                    self.apiFn()
+                  setTimeout(async () => {
+                    await self.apiFn()
                   }, 10000)
                 }
 
@@ -757,8 +767,8 @@ export default {
                 $('.modal-body-erro').html(self.$t('computingPower.t26'))
                 $('.clickDialogIconedDanger').click()
               } else {
-                setTimeout(() => {
-                  self.apiFn()
+                setTimeout(async () => {
+                  await self.apiFn()
                 }, 10000)
                 self.setHashArrFn(hash, tokenSymbol)
               }
@@ -771,39 +781,48 @@ export default {
           $('.clickDialogIconedDanger').click()
         }
         self.setHashArrFn(hash, tokenSymbol)
-        setTimeout(() => {
-          self.apiFn()
+        setTimeout(async () => {
+          await self.apiFn()
         }, 10000)
-        self.getAccountsFn()
+        await self.getAccountsFn()
       }
     },
-    apiFn() {
+    async apiFn() {
       if (localStorage.getItem('hashArr')) {
         let hashArr = JSON.parse(localStorage.getItem('hashArr'))
-        hashArr.forEach((e) => {
+        for(const e of hashArr){
           if (e.tokenSymbol != 'TRON USDT') {
-            this.rechargeFn2(e.hash, e.tokenSymbol, e.getChainId)
+            await this.rechargeFn2(e.hash, e.tokenSymbol, e.getChainId)
           }
-        })
+        }
       }
     },
     async forAllFn(hash) {
-      var getChainId = -1
-      if (Web3.givenProvider) {
-        let web3 = new Web3(Web3.givenProvider)
-        getChainId = await web3.eth.getChainId()
+      var getChainId = localStorage.getItem('tophis_chainId') || -1
+      try{
+        if (Web3.givenProvider) {
+          let web3 = new Web3(Web3.givenProvider)
+          getChainId = await web3.eth.getChainId()
+        }
+      }catch (e3){
+        console.error("forAllFn e3",e3)
       }
-      this.chainList.forEach((e) => {
-        this.rechargeFn2((hash || this.hash2), e.symbol, getChainId, 1)
-      })
+      for(const e of this.chainList){
+        await this.rechargeFn2((hash || this.hash2), e.symbol, getChainId, 1)
+      }
     },
 
     async setHashArrFn(hash, symbol) {
-      var getChainId = -1
-      if (Web3.givenProvider && hash && self.symbol != 'TRON USDT') {
-        let web3 = new Web3(Web3.givenProvider)
-        getChainId = await web3.eth.getChainId()
+      var getChainId = localStorage.getItem('tophis_chainId') || -1
+      try{
+        if (Web3.givenProvider && hash && self.symbol != 'TRON USDT') {
+          let web3 = new Web3(Web3.givenProvider)
+          getChainId = await web3.eth.getChainId()
+        }
+      }catch (e4){
+        console.error("setHashArrFn e4",e4)
       }
+
       if (symbol == 'TRON USDT') {
         return
       }
@@ -814,6 +833,7 @@ export default {
           hash: hash,
           getChainId,
         })
+        localStorage.setItem('hashArr', JSON.stringify(hashArr))
       } else {
         let hashArr = [
           {
@@ -841,22 +861,20 @@ export default {
     async rechargeFn2(hash, tokenSymbol, getChainId, type) {
       var self = this
 
-      self.axios
-          .post(self.api.recharge, {
+      const res =  await self.axios.post(self.api.recharge, {
             hash,
             chainId: getChainId,
             tokenSymbol,
           })
-          .then((res) => {
-            if (res.code == 200) {
-              this.removeHashArrFn(hash)
-              if (type == 1) {
-                self.hash2 = ''
-                $('.modal-body-success').html(self.$t('computingPower.t25'))
-                $('.clickDialogIconedSuccess').click()
-              }
-            }
-          })
+
+      if (res.code == 200) {
+        this.removeHashArrFn(hash)
+        if (type == 1) {
+          self.hash2 = ''
+          $('.modal-body-success').html(self.$t('computingPower.t25'))
+          $('.clickDialogIconedSuccess').click()
+        }
+      }
     },
     // 初始化 usdt
     usdtAbiInitFn() {

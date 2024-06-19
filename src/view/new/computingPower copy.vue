@@ -826,27 +826,27 @@ export default {
     },
     async getGasPriceFn() {
       var self = this
-      if (this.number * 1 > this.Balance * 1) {
-        $('.modal-body-erro').html(this.$t('tab.balance'))
-        $('.clickDialogIconedDanger').click()
-        return
-      }
-
-      if (this.symbol == 'TRON USDT') {
-        $('.DialogBasicPay').click()
-        return
-      }
-      if (!this.symbol) {
-        $('.modal-body-erro').html(this.$t('computingPower.t27'))
-
-        $('.clickDialogIconedDanger').click()
-        return
-      }
-      if (!this.number) {
-        $('.modal-body-erro').html(this.$t('computingPower.t28'))
-        $('.clickDialogIconedDanger').click()
-        return
-      }
+      // if (this.number * 1 > this.Balance * 1) {
+      //   $('.modal-body-erro').html(this.$t('tab.balance'))
+      //   $('.clickDialogIconedDanger').click()
+      //   return
+      // }
+      //
+      // if (this.symbol == 'TRON USDT') {
+      //   $('.DialogBasicPay').click()
+      //   return
+      // }
+      // if (!this.symbol) {
+      //   $('.modal-body-erro').html(this.$t('computingPower.t27'))
+      //
+      //   $('.clickDialogIconedDanger').click()
+      //   return
+      // }
+      // if (!this.number) {
+      //   $('.modal-body-erro').html(this.$t('computingPower.t28'))
+      //   $('.clickDialogIconedDanger').click()
+      //   return
+      // }
 
       let web3 = new Web3(Web3.givenProvider)
 
