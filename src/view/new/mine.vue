@@ -18,7 +18,7 @@
       <div class="links">
         <p>{{ $t('tab.t1') }}</p>
         <a href="https://x.com/Tophis_?s=09" target="_blank">{{ $t('tab.t2') }}</a>
-        <a href="https://t.me/tfs00001" target="_blank">{{ $t('tab.t3') }}</a>
+        <a href="https://t.me/tophis01" target="_blank">{{ $t('tab.t3') }}</a>
       </div>
       <div class="t2">
         <p>{{ $t('mine.t2') }}</p>
